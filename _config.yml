@@ -8,7 +8,7 @@ middle_name:
 last_name: Haoyuan
 email: penghy15@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Senior Algorithm Engineer (NLP) at Learnable.AI, ex-Tencent, ex-FDU
+  Senior Algorithm Engineer (NLP) at ByteDance, ex-Tencent, ex-FDU
 footer_text:
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
 
