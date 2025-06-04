@@ -1,1 +1,597 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title>试答机器学习理论知识中的一些常见问题 (1 / 3) | Peng Haoyuan</title> <meta name="author" content="Peng Haoyuan"> <meta name="description" content="试答机器学习理论知识中的一些常见问题 (1 / 3)"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous"> <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css"> <link rel="canonical" href="https://haoyuanpeng.github.io/blog/2023/common_ml_problems_1_of_3/"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark"> <script src="/assets/js/theme.js"></script> <script src="/assets/js/dark_mode.js"></script> </head> <body class="fixed-top-nav sticky-bottom-footer"> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Peng </span>Haoyuan</a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about</a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications</a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv</a> </li> <li class="nav-item "> <a class="nav-link" href="/cv_zh/">中文简历</a> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="fas fa-moon"></i> <i class="fas fa-sun"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5"> <div class="post"> <header class="post-header"> <h1 class="post-title">试答机器学习理论知识中的一些常见问题 (1 / 3)</h1> <p class="post-meta">July 2, 2023</p> <p class="post-tags"> <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>   ·   <a href="/blog/tag/machine-learning"> <i class="fas fa-hashtag fa-sm"></i> Machine Learning</a>   </p> </header> <article class="post-content"> <p>有网友总结了机器学习理论知识中的一些常见问题，链接见：</p> <ol> <li><a href="https://www.1point3acres.com/bbs/thread-713903-1-1.html" rel="external nofollow noopener" target="_blank">https://www.1point3acres.com/bbs/thread-713903-1-1.html</a></li> <li><a href="https://www.1point3acres.com/bbs/thread-714090-1-1.html" rel="external nofollow noopener" target="_blank">https://www.1point3acres.com/bbs/thread-714090-1-1.html</a></li> <li><a href="https://www.1point3acres.com/bbs/thread-714558-1-1.html" rel="external nofollow noopener" target="_blank">https://www.1point3acres.com/bbs/thread-714558-1-1.html</a></li> </ol> <p>现试答如下，欢迎批评指正。本文为第一部分，共三部分，每一部分与上述三个链接一一对应。</p> <h4 id="overfitting--underfiting是指的什么"><strong>overfitting / underfiting是指的什么</strong></h4> <p><em>overfitting指的是模型过度拟合了训练集的样本，包括其中的噪声，表现为训练集的Loss很低，但验证集的Loss较高； underfitting指的是因为参数量、特征选择、训练进度等原因，未能充分学习训练集中样本的特征，表现为训练集和验证集的loss都较高。</em></p> <h4 id="biasvariance-trade-off是指的什么"><strong>bias/variance trade off是指的什么</strong></h4> <p><em>bias指的是模型的预测结果与Ground Truth之差的期望，variance指的是同一个模型在不同的训练数据下，对同一个样本的预测结果的方差。一般而言，随着模型复杂度和特征复杂度的增加，bias会下降，而variance会上升，因此需要找到一个合适的复杂度，使得bias^2 + variance最小。</em></p> <h4 id="过拟合一般有哪些预防手段"><strong>过拟合一般有哪些预防手段</strong></h4> <p><em>数据方面：增加训练数据量；对训练数据进行数据增强；减少训练数据的特征数量；</em></p> <p><em>模型和训练策略方面：使用单独的验证集或使用交叉验证来观察是否发生了过拟合；使用Regularization控制模型参数的scale；使用Early Stopping控制训练进度；使用Ensemble降低Variance。</em></p> <h4 id="generative和discriminative的区别"><strong>Generative和Discriminative的区别</strong></h4> <p><em>对于输入特征x和样本y，generative model学习P(x,y)，而discriminative model学习P(y|x)</em></p> <h4 id="give-a-set-of-ground-truths-and-2-models-how-do-you-be-confident-that-one-model-is-better-than-another"><strong>Give a set of ground truths and 2 models, how do you be confident that one model is better than another?</strong></h4> <p><em>确定合适的metric，并使用k-fold cross validation对模型效果进行验证。</em></p> <h4 id="l1-vs-l2-which-one-is-which-and-difference"><strong>L1 vs L2, which one is which and difference</strong></h4> <p><em>L1 Norm是将所有参数的绝对值之和作为正则项，L2 Norm是将所有参数的平方和作为正则项。L1对outlier更Robust，且有稀疏性；L2计算起来更方便，且有唯一解。</em></p> <h4 id="lasso--ridge-的解释prior分别是什么"><strong>Lasso / Ridge 的解释（Prior分别是什么）</strong></h4> <p><em>Lasso是指加入系数的L1 Norm作为正则项，而Ridge是加入系数的L2 Norm作为正则项。L1的prior是认为参数w的先验概率满足拉普拉斯分布，而L2的prior是认为参数w的先验满足高斯分布。</em></p> <h4 id="lasso--ridge-的推导"><strong>Lasso / Ridge 的推导</strong></h4> <p><em>Lasso:</em></p> \[\begin{aligned} L(w)=\|Xw - Y\|^2 + \alpha \sum \|w_j\| \\ \frac{\partial L(w)}{\partial w} = 2X^TXw - 2X^TY + \alpha C \\ w = (X^TX)^{-1}(X^TY-\frac{\alpha}{2}C) \end{aligned}\] <p><em>Ridge:</em></p> \[\begin{aligned} L(w)=\|Xw - Y\|^2 + \alpha \sum \|w_j\|^2 \\ \frac{\partial L(w)}{\partial w} = 2X^TXw - 2X^TY + 2\alpha w \\ (X^X+\alpha I)w = X^TY \\ w = (X^TX + \alpha I)^{-1}X^TY \end{aligned}\] <h4 id="为什么l1比l2稀疏"><strong>为什么L1比L2稀疏？</strong></h4> <p><em>定义损失函数与某个权重参数x的函数为L(x)。</em> <em>当施加L1 Norm的时候，\(f(x)=L(x)+C|x|\)，则\(f'(0-)=L'(0)-C，f'(0+)=L'(0)+C\)，要使0成为f的极值点，则需要\(f'(0-)*f'(0+)&lt;0\)，解得\(C&gt;|L'(0)|\)。也就是说，只要正则项的系数C大于Loss function在参数x为0的时候的导数的绝对值，则x的最优解就是0。</em></p> <p><em>当施加L2 Norm的时候，\(f(x)=L(x)+Cx^2\)，则\(f'(0)=L'(0)\)，要使x=0为极值点，则需要\(L'(0)=0\)，条件很难满足。</em></p> <h4 id="为什么regularization-works"><strong>为什么regularization works？</strong></h4> <p><em>因为过拟合的曲线考虑到了训练集上每个样本点的噪声，因此会发生“突变”的现象，即斜率会变得较大。对线性模型来说，斜率其实就是参数的值，推广到多维复杂模型，参数的值越大，越容易发生突变。而加入正则项之后，Loss function与参数值相关，优化器要降低loss，就要降低参数的值，从而降低突变的可能性，因此可以抑制过拟合现象。</em></p> <p><em>对于Lasso而言，因为将权重惩罚到了0，相当于降低了模型使用的特征数量即复杂度。</em></p> <h4 id="为什么regularization用l1l2而不用l3l4"><strong>为什么regularization用L1、L2，而不用L3、L4？</strong></h4> <p><em>因为L1和L2的效果已经得到了充分验证，且L1能产生稀疏特征。相比较而言，L3和L4的计算复杂度更大，效果也没有充分验证。</em></p> <h4 id="precision-and-recall-trade-off"><strong>Precision and Recall, trade-off</strong></h4> <p><em>Precision表示True Positive占所有预测的Positive的比例，衡量模型的产生False Positive的程度。 Recall表示True Positive占所有正样本的比例，衡量模型产生False Negative的程度。</em></p> <p><em>可用通过F Score，基于Precision和Recall对实际任务的权重，对Precision和Recall进行Trade Off.</em></p> <h4 id="label不平衡时用什么metric"><strong>label不平衡时用什么metric</strong></h4> <p><em>可以用各个类别，或者关注的正样本类别（二分类）的P、R、F1作为metric，在二分类场景下，也可以用ROC-AUC作为metric。</em></p> <h4 id="分类问题该用什么metricand-why"><strong>分类问题该用什么metric，and why？</strong></h4> <p><em>Accuracy、Top-K acc、P、R、F、混淆矩阵，P-R Curve、ROC-AUC</em></p> <h4 id="confusion-matrix"><strong>confusion matrix</strong></h4> <p><em>一个矩阵，matrix[i][j]表示实际为第i类，预测为第j类的样本数量。</em></p> <h4 id="auc的解释the-probability-of-ranking-a-randomly-selected-positive-sample-higher-"><strong>AUC的解释（The probability of ranking a randomly selected positive sample higher …)</strong></h4> <p><em>ROC曲线是二分类模型在不同分类阈值下的效果曲线，横坐标为FPR，即假阳率；纵坐标为召回率。FPR=0时，Recall=0，FPR=1时，Recall=1。因此ROC曲线 连接了(0,0)和(1, 1)两点。ROC-AUC是指曲线下的面积，面积越大，表示模型在相同的FPR下，Recall越高，因此模型的效果越好。同时，ROC-AUC也正好等于 随机挑选一个正样本和一个负样本，正样本的得分（即预测为正样本的概率）比负样本高的概率。</em></p> <p><em>ROC-AUC的概率意义的证明暂缺。</em></p> <h4 id="true-positive-rate-false-positive-rate-roc"><strong>true positive rate, false positive rate, ROC</strong></h4> <p><em>TPR = Recall，FPR = FP / (FP + TN)；ROC为横坐标为FPR，纵坐标为TPR的曲线，可以衡量模型的效果。ROC仅对排序敏感，而对具体的预测概率值不敏感。 两个模型可能ROC-AUC相同，但在不同的FPR区间表现的效果差异较大（MisLeading)。同时，当用户对FPR和TPR有不同的重视程度时，这个指标无法满足。</em></p> <h4 id="log-loss是什么什么时候用log-loss"><strong>Log-loss是什么，什么时候用Log-loss</strong></h4> <p><em>Log-loss就是Likelihood的负对数，即\(-logP(Y_{gt}\vert X)\)，在分类场景，尤其是关注类别置信度的分类场景时适用。</em></p> <h4 id="场景相关的问题比如ranking-design的时候用什么metric推荐的时候用什么等"><strong>场景相关的问题，比如ranking design的时候用什么metric，推荐的时候用什么等？</strong></h4> <p><em>排序任务的指标：</em></p> <ul> <li><em>MAP：将排序后，所有relevant position处的precision进行平均</em></li> <li><em>MRR：将Top-1所在rank的倒数作平均</em></li> <li><em>NDCG：DCG就是每个位置的相关性，除以相应位置的对数（排序越往后，重要性越低）。NDCG就是DCG除以DCG的理论最大值。</em></li> </ul> <h4 id="用mse做loss的logistic-regression是convex-problem吗"><strong>用MSE做loss的Logistic Regression是convex problem吗？</strong></h4> <p><em>不是。证明如下：</em></p> \[\begin{aligned} 令f(x) = (y - \hat y)^2, 其中\hat y = \frac{1}{1 + e^{-\theta x}} \\ 则有\frac{\partial f}{\partial \theta} = \frac{\partial f}{\partial \hat y} \frac{\partial \hat y}{\partial \theta} \\ =-2(y-\hat y)\hat y(1-\hat y)x \\ =-2(y\hat y - y\hat y ^ 2 - \hat y^2 + \hat y^3)x \frac{\partial^2 f}{\partial \theta^2} \\ = -2(y\hat y - y\hat y ^ 2 - \hat y^2 + \hat y^3)x \cdot {\hat y (1 - \hat y)x} \\ \\ \because \hat y \in (0, 1) \\ \therefore x^2\hat y (1- \hat y) &gt; 0 \end{aligned}\] <p><em>在\(y=0\)和\(y=1\)时分别求上式&gt;0的\(\hat y\)的取值范围，可得上式有正有负，所以是non convex的。</em></p> <h4 id="解释并写出mse的公式什么时候用到mse"><strong>解释并写出MSE的公式，什么时候用到MSE？</strong></h4> <p><em>MSE就是Mean Squared Error，即每个样本的预测值与真实值之差的平方的平均值。在回归任务中，假设真实值和观测值的误差服从高斯分布，则会用到MSE，如果误差服从拉普拉斯分布，则用MAE。</em></p> <h4 id="linear-regression最小二乘法和mse的关系"><strong>Linear Regression最小二乘法和MSE的关系</strong></h4> <p><em>最小二乘法就是最小化MSE的一种求解方法。</em></p> <h4 id="什么是relative-entropy--cross-entropy以及kl-divergence他们的intuition"><strong>什么是relative entropy / cross entropy，以及KL Divergence，他们的intuition</strong></h4> <p><em>Relative entropy就是KL Divergence，衡量两个概率分布的差异。</em>\(D_{KL}(P \| Q) = \sum_i P(i)ln\frac{P(i)}{Q(i)}\)</p> <p><em>KL Divergence和交叉熵：\(D_{KL}(P \| Q) = -S(P) + H(P, Q)\)</em></p> <h4 id="logistic-regression的loss是什么"><strong>Logistic Regression的Loss是什么？</strong></h4> <p><em>Negative Log Likelihood.</em></p> <h4 id="logistic-regression的loss推导"><strong>Logistic Regression的Loss推导</strong></h4> \[\begin{aligned} 令\beta表示模型参数，x_i表示输入，y_i表示正确结果，\delta = \frac{1}{1 + e^{-\beta^Tx_i}}，则有 \\ p(y_i\vert x_i, \beta) = \delta^{y_i}(1-\delta)^{1-y_i} \\ NLL = -\sum ln(\delta^{y_i}(1-\delta)^{1-y_i}) \\ \frac{\partial NLL}{\partial \beta} = -\sum (y_i \cdot \frac{1}{\delta} \cdot \delta (1-\delta)x_i + (1-y_i) \cdot \frac{1}{1-\delta} \cdot -\delta (1- \delta)x_i )\\ = -\sum(\delta - y_i)x_i \\ \end{aligned}\] <h4 id="svm的loss是什么"><strong>SVM的Loss是什么</strong></h4> <p><em>Hinge Loss. \(L = max(0, 1 - ty)\)，其中t为目标值，取值为1或-1，y为预测值。不鼓励模型过度自信。</em></p> <h4 id="multiclass-logistic-regression然后问了一个为什么用cross-entropy做loss-function"><strong>Multiclass Logistic Regression，然后问了一个为什么用cross entropy做Loss function。</strong></h4> <p><em>K个1 vs. others分类器。在Logistics Regression中，优化cross entropy等于优化NLL.</em></p> <h4 id="decision-tree-split-nodes时的优化目标是啥"><strong>Decision Tree split nodes时的优化目标是啥</strong></h4> <p><em>信息增益。</em></p> <h4 id="dnn为什么要有bias-termbias-term的intuition是什么"><strong>DNN为什么要有bias term，bias term的intuition是什么？</strong></h4> <p><em>如果没有bias，则分类超平面则必须经过原点。Bias可以对分类超平面进行平移。</em></p> <h4 id="什么是back-propagation"><strong>什么是Back propagation?</strong></h4> <p><em>Back Propagation是指误差反向传播，是一种对神经网络进行梯度下降的算法，即用链式法则计算损失函数对每层权重的梯度，并据此来更新权重。</em></p> <h4 id="梯度消失和梯度爆炸是什么怎么解决">梯度消失和梯度爆炸是什么？怎么解决？</h4> <p><em>梯度消失和梯度爆炸是训练深层神经网络或者Vanilla RNN时存在的问题。使用Back Propagation算法进行链式求导时，对于靠近输入端的权重，其梯度是每一层权重以及每一层的激活函数的梯度的乘积数，如果梯度较小（如 使用了不合适的激活函数，如Sigmoid，其导数的取值范围是(0, 0.25))，会导致梯度的值逐层减小，最终消失。梯度消失表现为随着模型训练，loss下降很慢，尤其是离输出层近的权重改变幅度大，离输出层远的权重改变幅度小甚至为0。反之，如果梯度较大，会导致 梯度逐层指数增加，产生梯度爆炸，表现为loss值和模型权重剧烈变化，甚至变成NaN。</em></p> <p><em>解决梯度消失问题的方法主要有：更换激活函数为Relu或其变种、增加Residual Connection和使用Batch Norm。</em></p> <p><em>解决梯度爆炸问题的方法主要有：梯度裁剪、加入正则项、更好的初始化策略等。</em></p> <h4 id="神经网络初始化能不能把weights都设置成0"><strong>神经网络初始化能不能把weights都设置成0？</strong></h4> <p><em>不能，也不能设为相同的值，否则会导致每一层Hidden Layer中各个节点的值完全相同，根据反向传播算法，每个参数更新的值也相同，无法正常学习特征。</em></p> <h4 id="dnn和logistic-regression区别"><strong>DNN和Logistic Regression区别</strong></h4> <p><em>可以把Logistic Regression看成一个只有一层的神经网络，只能学习特征各自的权重（有可解释性），并将特征的加权和通过sigmoid函数进行二分类。</em></p> <h4 id="你为什么觉得dnn拟合能力比logistic-regression强"><strong>你为什么觉得DNN拟合能力比Logistic Regression强？</strong></h4> <p><em>因为DNN可以学习特征的组合关系，而Logistic Regression只能学习特征各自的权重。</em></p> <h4 id="how-to-do-hyper-parameter-tuning-in-dl"><strong>How to do hyper-parameter tuning in DL?</strong></h4> <p><em>可以通过Grid Search的方法进行，也有一些AutoML的方法，如贝叶斯优化。</em></p> <h4 id="deep-learning有哪些预防over-fitting的方法"><strong>Deep Learning有哪些预防over fitting的方法？</strong></h4> <p><em>Weight Decay、Dropout、Pretrain + Finetune、Early Stopping、数据增强等。</em></p> <h4 id="什么是dropoutwhy-it-works-dropout的流程是什么"><strong>什么是Dropout？Why it works? Dropout的流程是什么？</strong></h4> <p><em>Dropout是一种在训练深度神经网络时防止过拟合的方法。在训练阶段的前向过程中，通过将hidden layer的值直接设为0的方式，忽略一部分的隐藏层神经元。这部分神经元不产生梯度传播。在推理阶段则保留全部的隐藏层神经元，并将神经元的输出进行Rescale。</em></p> <p><em>Dropout有效果，一方面是在训练的时候迫使每个神经元的取值不依赖于任何一个特定的其它神经元，降低了网络的复杂度。如果把不同的dropout看成是不同的子网络，也体现一种集成学习的思想。</em></p> <h4 id="什么是batch-normwhy-it-works-bn的流程是什么"><strong>什么是Batch Norm？Why it works? BN的流程是什么？</strong></h4> <p><em>BN是一种用于神经网络的Regularization技术，目的是解决神经网络中的Internal covariate shift的问题，即随着神经网络的训练，权重的分布发生变化，导致输出给下一层的特征的分布发生变化，而这个变化需要下一层的网络权重额外学习。</em></p> <p><em>BN包括两个阶段，归一化和scale and shift。它学习两个参数，\(\gamma\)和\(\beta\)。在训练阶段，对每个mini batch的输入，BN层计算其均值和标准差，并将其归一化到标准正态分布。然后通过使用学习到的\(\gamma\)和\(\beta\)进行缩放和平移。</em></p> <p><em>在推理阶段，因为只有一个样本的输入，无法计算均值和方差，所以在训练的时候会同时记录训练样本的均值和方差。训练样本的均值和方差一般通过滑动平均的方式来更新。</em></p> <h4 id="common-activation-functions是什么以及每个的优缺点"><strong>common activation functions是什么以及每个的优缺点</strong></h4> <p><em>Sigmoid：可以将输入映射到0和1之间的连续输出，可以解释为概率并用于二分类问题。缺点：容易造成梯度消失，且输出不是以0为中心。</em></p> <p><em>tanh：将输入映射到-1到1之间，产生以0为中心的输出。缺点：计算开销大，且输入远离0的时候，梯度也接近0，容易造成梯度消失。</em></p> <p><em>ReLU：将负的输入映射为0，正的输入保持不变，简单有效，计算速度快，产生稀疏特征。缺点：输入为负的神经元梯度为0。</em></p> <p><em>Leaky ReLU: ReLU的改进，输入为负的时候引入一个小的斜率，可以允许梯度的传播。</em></p> <p><em>还有一些基于ReLU的改进，如引入可学习的参数来控制斜率等。</em></p> <h4 id="为什么需要non-linear-activation-functions"><strong>为什么需要Non-Linear activation functions？</strong></h4> <p><em>如果没有非线性激活函数，则DNN退化成对输入特征的线性变换，不能产生非线性的决策边界。</em></p> <h4 id="different-optimizers-sgd-rmsprop-momentum-adagrad-adam的区别"><strong>Different Optimizers （SGD, RMSProp, Momentum, Adagrad, Adam）的区别</strong></h4> <p><em>SGD是基本的梯度下降算法，每次迭代通过当前样本的梯度更新模型参数。\(\theta_{t+1} = \theta_t - \eta \nabla J(\theta)\) 。SGD（包括Mini-Batch GD)有两个问题：1.容易陷在局部最小值（saddle point或者plateau)。 2.学习率始终固定。动量方法应对问题1，而自适应学习率方法应对问题2。</em></p> <p><em>Momentum在SGD的基础上增加了动量概念，即在参数更新时，既利用当前Batch的梯度，也保留原有的更新方向，即</em></p> \[\begin{aligned} m_{t+1}=\mu \cdot m_t + \eta \nabla J(\theta); \\ \theta_{t+1} = \theta_t - m_{t+1} \end{aligned}\] <p><em>Nestrov accelerate gradient是Momentum的变种，具体做法是计算梯度时，先在\(\theta\)上减去上一时刻的动量</em></p> \[\begin{aligned} m_{t+1}=\mu \cdot m_t + \eta \nabla J(\theta - \mu \cdot m_t); \\ \theta_{t+1} = \theta_t - m_{t+1} \end{aligned}\] <p><em>Adagrad是一种自适应学习率算法，目的是对学习率进行动态调整。在更新梯度时，对每个参数，将全局学习率除以一个基于梯度累计范数的约束项，这样前期的梯度更新量较大，后期梯度更新量较小。频繁更新的参数梯度更新量较小，稀疏更新的参数梯度更新量较大。</em></p> \[\theta_{t+1, i} = \theta_{t, i} - \frac{\eta}{\sqrt{G_{t, i} + \epsilon}} \cdot \nabla J(\theta_{t,i})\] <p><em>Adagrad的问题是到了训练中后期，因为约束项分母过大，导致参数更新量太小，无法学习。RMSProp将不断累计的梯度更新量之和改为RMS形式的梯度移动平均。</em></p> \[\begin{aligned} E[g^2]_t = \rho \cdot E[g^2]_{t-1} + (1-\rho) \cdot g_t^2 \\ \theta_{t+1} = \theta_{t} - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} \cdot \nabla J(\theta_{t}) = \theta_t - \frac{\eta}{RMS[g]_t}\cdot \nabla J(\theta_{t}) \end{aligned}\] <p><em>Adadelta将RMSProp中的固定学习率参数\(\eta\)转换为上一时刻的\(\Delta \theta\)的RMS，不需要指定固定的学习率。(Pytorch中的adadelta优化器有学习率参数lr，但它是可选参数，默认值是1.0，相当于对自适应梯度再做一次scale）。</em></p> \[\theta_{t+1} = \theta_t - \frac{RMS[\Delta(\theta)]_{t-1}}{RMS[g]_t}\cdot \nabla J(\theta_{t})\] <p><em>Adam优化器可以看作是动量和自适应学习率的结合，类似RMSProp + Momentum。Adam保留过去梯度的指数衰减平均值，也保留梯度的平方的指数衰减平均值：</em></p> \[\begin{aligned} m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\ v_t = \beta_2 v_{t-1} + (1-\beta_2)g^2_t \\ \hat m_t = \frac{m_t}{1-\beta^t_1} \\ \hat v_t = \frac{v_t}{1-\beta^t_2} \\ \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t + \epsilon}} \cdot \hat m_t \end{aligned}\] <p><em>目前主流的优化器是AdamW，即增加了WeightDecay的Adam优化器。AdamW优化器将参数权重的decay从梯度计算中分离出去，单独基于L2正则化计算权重衰减。</em></p> <h4 id="batch和sgd的优缺点batch-size的影响"><strong>Batch和SGD的优缺点，Batch size的影响</strong></h4> <p><em>Batch GD（区别于Mini Batch GD）是一次性迭代所有的训练样本，而SGD是每次迭代一个训练样本，Mini-Batch GD是两者的折中，通过超参数Batch Size控制每次迭代的样本数量。</em></p> <p><em>BGD优点是较为稳定，缺点是每次迭代完整的数据集，速度较慢，且无法应用到大数据集上；</em></p> <p><em>SGD的优点是计算成本低，内存需求小，缺点是受噪声影响大，更新方向的方差较大，收敛过程不稳定且对学习率敏感。</em></p> <p><em>Mini Batch作为两者的折中，是主流的方案，可以通过一个mini-batch中的样本近似整体梯度，减少更新方向的方差，更新更稳定，也可以通过并行化来提升计算效率。</em></p> <p><em>Batch Size的影响主要是内存/显存的占用量，同时，batch size发生变化时，学习率也要相应调整。</em></p> <h4 id="learning-rate过大和过小对模型的影响"><strong>learning rate过大和过小对模型的影响</strong></h4> <p><em>学习率设置过大时，容易出现梯度爆炸的问题，也容易产生Loss的震荡。学习率设置过小时，会使得模型的收敛速度太慢，且容易陷入局部最小值无法跳出。主流的做法会对学习率进行warmup和衰减。</em></p> <h4 id="problem-of-plateau-saddle-point"><strong>Problem of Plateau, Saddle point</strong></h4> <p><em>Problem of Plateau是指目标函数在一个区域内非常平坦，梯度接近0。而saddle point指的是目标函数在某个区域梯度为0，但并非局部最小值（在某些维度上升，某些维度下降）。可以通过基于动量的优化器，以及自适应学习率解决这两个问题。</em></p> <h4 id="when-transfer-learning-makes-sense"><strong>When transfer learning makes sense.</strong></h4> <p><em>迁移学习是将在一个任务上学习到的知识（模型参数）应用到另一个任务上，当新的任务有监督数据较少，且和原任务有类似的原始输入特征时有效。如把基于ImageNet训练的CNN权重作为其它分类任务的 初始值，或者NLP领域的Pretrain + Finetune以及Prompt Tuning两个Paradigm，都能看成是迁移学习的成功应用。</em></p> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/quick_pow_mod_conbination_mod/">高效计算幂取模和组合数取模</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/common_ml_problems_2_of_3/">试答机器学习理论知识中的一些常见问题 (2 / 3)</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/common_ml_problems_3_of_3/">试答机器学习理论知识中的一些常见问题 (3 / 3)</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2019/ant/">Fun Stuff - A problem with ants</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2019/library/">Fun Stuff - A puzzle about librarians</a> </li> </div> </div> <footer class="sticky-bottom mt-5"> <div class="container"> © Copyright 2025 Peng Haoyuan. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script> <script defer src="/assets/js/masonry.js" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js"></script> <script defer src="/assets/js/common.js"></script> <script defer src="/assets/js/copy_code.js" type="text/javascript"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script type="text/javascript">window.MathJax={tex:{tags:"ams"}};</script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script> <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript">function progressBarSetup(){"max"in document.createElement("progress")?(initializeProgressElement(),$(document).on("scroll",function(){progressBar.attr({value:getCurrentScrollPosition()})}),$(window).on("resize",initializeProgressElement)):(resizeProgressBar(),$(document).on("scroll",resizeProgressBar),$(window).on("resize",resizeProgressBar))}function getCurrentScrollPosition(){return $(window).scrollTop()}function initializeProgressElement(){let e=$("#navbar").outerHeight(!0);$("body").css({"padding-top":e}),$("progress-container").css({"padding-top":e}),progressBar.css({top:e}),progressBar.attr({max:getDistanceToScroll(),value:getCurrentScrollPosition()})}function getDistanceToScroll(){return $(document).height()-$(window).height()}function resizeProgressBar(){progressBar.css({width:getWidthPercentage()+"%"})}function getWidthPercentage(){return getCurrentScrollPosition()/getDistanceToScroll()*100}const progressBar=$("#progress");window.onload=function(){setTimeout(progressBarSetup,50)};</script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>试答机器学习理论知识中的一些常见问题 (1 / 3) | Peng  Haoyuan</title>
+    <meta name="author" content="Peng  Haoyuan">
+    <meta name="description" content="试答机器学习理论知识中的一些常见问题  (1 / 3)">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://haoyuanpeng.github.io/blog/2023/common_ml_problems_1_of_3/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Peng </span>Haoyuan</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv_zh/">中文简历</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">试答机器学习理论知识中的一些常见问题 (1 / 3)</h1>
+    <p class="post-meta">July 2, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/tag/machine-learning">
+          <i class="fas fa-hashtag fa-sm"></i> Machine Learning</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    <p>有网友总结了机器学习理论知识中的一些常见问题，链接见：</p>
+
+<ol>
+  <li><a href="https://www.1point3acres.com/bbs/thread-713903-1-1.html" rel="external nofollow noopener" target="_blank">https://www.1point3acres.com/bbs/thread-713903-1-1.html</a></li>
+  <li><a href="https://www.1point3acres.com/bbs/thread-714090-1-1.html" rel="external nofollow noopener" target="_blank">https://www.1point3acres.com/bbs/thread-714090-1-1.html</a></li>
+  <li><a href="https://www.1point3acres.com/bbs/thread-714558-1-1.html" rel="external nofollow noopener" target="_blank">https://www.1point3acres.com/bbs/thread-714558-1-1.html</a></li>
+</ol>
+
+<p>现试答如下，欢迎批评指正。本文为第一部分，共三部分，每一部分与上述三个链接一一对应。</p>
+
+<h4 id="overfitting--underfiting是指的什么"><strong>overfitting / underfiting是指的什么</strong></h4>
+
+<p><em>overfitting指的是模型过度拟合了训练集的样本，包括其中的噪声，表现为训练集的Loss很低，但验证集的Loss较高；
+underfitting指的是因为参数量、特征选择、训练进度等原因，未能充分学习训练集中样本的特征，表现为训练集和验证集的loss都较高。</em></p>
+
+<h4 id="biasvariance-trade-off是指的什么"><strong>bias/variance trade off是指的什么</strong></h4>
+
+<p><em>bias指的是模型的预测结果与Ground Truth之差的期望，variance指的是同一个模型在不同的训练数据下，对同一个样本的预测结果的方差。一般而言，随着模型复杂度和特征复杂度的增加，bias会下降，而variance会上升，因此需要找到一个合适的复杂度，使得bias^2 + variance最小。</em></p>
+
+<h4 id="过拟合一般有哪些预防手段"><strong>过拟合一般有哪些预防手段</strong></h4>
+
+<p><em>数据方面：增加训练数据量；对训练数据进行数据增强；减少训练数据的特征数量；</em></p>
+
+<p><em>模型和训练策略方面：使用单独的验证集或使用交叉验证来观察是否发生了过拟合；使用Regularization控制模型参数的scale；使用Early Stopping控制训练进度；使用Ensemble降低Variance。</em></p>
+
+<h4 id="generative和discriminative的区别"><strong>Generative和Discriminative的区别</strong></h4>
+
+<p><em>对于输入特征x和样本y，generative model学习P(x,y)，而discriminative model学习P(y|x)</em></p>
+
+<h4 id="give-a-set-of-ground-truths-and-2-models-how-do-you-be-confident-that-one-model-is-better-than-another"><strong>Give a set of ground truths and 2 models, how do you be confident that one model is better than another?</strong></h4>
+
+<p><em>确定合适的metric，并使用k-fold cross validation对模型效果进行验证。</em></p>
+
+<h4 id="l1-vs-l2-which-one-is-which-and-difference"><strong>L1 vs L2, which one is which and difference</strong></h4>
+
+<p><em>L1 Norm是将所有参数的绝对值之和作为正则项，L2 Norm是将所有参数的平方和作为正则项。L1对outlier更Robust，且有稀疏性；L2计算起来更方便，且有唯一解。</em></p>
+
+<h4 id="lasso--ridge-的解释prior分别是什么"><strong>Lasso / Ridge 的解释（Prior分别是什么）</strong></h4>
+
+<p><em>Lasso是指加入系数的L1 Norm作为正则项，而Ridge是加入系数的L2 Norm作为正则项。L1的prior是认为参数w的先验概率满足拉普拉斯分布，而L2的prior是认为参数w的先验满足高斯分布。</em></p>
+
+<h4 id="lasso--ridge-的推导"><strong>Lasso / Ridge 的推导</strong></h4>
+
+<p><em>Lasso:</em></p>
+
+\[\begin{aligned}
+L(w)=\|Xw - Y\|^2 + \alpha \sum \|w_j\|  \\
+\frac{\partial L(w)}{\partial w} = 2X^TXw - 2X^TY + \alpha C \\
+w = (X^TX)^{-1}(X^TY-\frac{\alpha}{2}C)
+
+\end{aligned}\]
+
+<p><em>Ridge:</em></p>
+
+\[\begin{aligned}
+L(w)=\|Xw - Y\|^2 + \alpha \sum \|w_j\|^2 \\
+\frac{\partial L(w)}{\partial w} = 2X^TXw - 2X^TY + 2\alpha w \\
+(X^X+\alpha I)w = X^TY \\
+w = (X^TX + \alpha I)^{-1}X^TY
+
+\end{aligned}\]
+
+<h4 id="为什么l1比l2稀疏"><strong>为什么L1比L2稀疏？</strong></h4>
+
+<p><em>定义损失函数与某个权重参数x的函数为L(x)。</em>
+<em>当施加L1 Norm的时候，\(f(x)=L(x)+C|x|\)，则\(f'(0-)=L'(0)-C，f'(0+)=L'(0)+C\)，要使0成为f的极值点，则需要\(f'(0-)*f'(0+)&lt;0\)，解得\(C&gt;|L'(0)|\)。也就是说，只要正则项的系数C大于Loss function在参数x为0的时候的导数的绝对值，则x的最优解就是0。</em></p>
+
+<p><em>当施加L2 Norm的时候，\(f(x)=L(x)+Cx^2\)，则\(f'(0)=L'(0)\)，要使x=0为极值点，则需要\(L'(0)=0\)，条件很难满足。</em></p>
+
+<h4 id="为什么regularization-works"><strong>为什么regularization works？</strong></h4>
+
+<p><em>因为过拟合的曲线考虑到了训练集上每个样本点的噪声，因此会发生“突变”的现象，即斜率会变得较大。对线性模型来说，斜率其实就是参数的值，推广到多维复杂模型，参数的值越大，越容易发生突变。而加入正则项之后，Loss function与参数值相关，优化器要降低loss，就要降低参数的值，从而降低突变的可能性，因此可以抑制过拟合现象。</em></p>
+
+<p><em>对于Lasso而言，因为将权重惩罚到了0，相当于降低了模型使用的特征数量即复杂度。</em></p>
+
+<h4 id="为什么regularization用l1l2而不用l3l4"><strong>为什么regularization用L1、L2，而不用L3、L4？</strong></h4>
+
+<p><em>因为L1和L2的效果已经得到了充分验证，且L1能产生稀疏特征。相比较而言，L3和L4的计算复杂度更大，效果也没有充分验证。</em></p>
+
+<h4 id="precision-and-recall-trade-off"><strong>Precision and Recall, trade-off</strong></h4>
+
+<p><em>Precision表示True Positive占所有预测的Positive的比例，衡量模型的产生False Positive的程度。
+Recall表示True Positive占所有正样本的比例，衡量模型产生False Negative的程度。</em></p>
+
+<p><em>可用通过F Score，基于Precision和Recall对实际任务的权重，对Precision和Recall进行Trade Off.</em></p>
+
+<h4 id="label不平衡时用什么metric"><strong>label不平衡时用什么metric</strong></h4>
+
+<p><em>可以用各个类别，或者关注的正样本类别（二分类）的P、R、F1作为metric，在二分类场景下，也可以用ROC-AUC作为metric。</em></p>
+
+<h4 id="分类问题该用什么metricand-why"><strong>分类问题该用什么metric，and why？</strong></h4>
+
+<p><em>Accuracy、Top-K acc、P、R、F、混淆矩阵，P-R Curve、ROC-AUC</em></p>
+
+<h4 id="confusion-matrix"><strong>confusion matrix</strong></h4>
+
+<p><em>一个矩阵，matrix[i][j]表示实际为第i类，预测为第j类的样本数量。</em></p>
+
+<h4 id="auc的解释the-probability-of-ranking-a-randomly-selected-positive-sample-higher-"><strong>AUC的解释（The probability of ranking a randomly selected positive sample higher …)</strong></h4>
+
+<p><em>ROC曲线是二分类模型在不同分类阈值下的效果曲线，横坐标为FPR，即假阳率；纵坐标为召回率。FPR=0时，Recall=0，FPR=1时，Recall=1。因此ROC曲线
+连接了(0,0)和(1, 1)两点。ROC-AUC是指曲线下的面积，面积越大，表示模型在相同的FPR下，Recall越高，因此模型的效果越好。同时，ROC-AUC也正好等于
+随机挑选一个正样本和一个负样本，正样本的得分（即预测为正样本的概率）比负样本高的概率。</em></p>
+
+<p><em>ROC-AUC的概率意义的证明暂缺。</em></p>
+
+<h4 id="true-positive-rate-false-positive-rate-roc"><strong>true positive rate, false positive rate, ROC</strong></h4>
+
+<p><em>TPR = Recall，FPR = FP / (FP + TN)；ROC为横坐标为FPR，纵坐标为TPR的曲线，可以衡量模型的效果。ROC仅对排序敏感，而对具体的预测概率值不敏感。
+两个模型可能ROC-AUC相同，但在不同的FPR区间表现的效果差异较大（MisLeading)。同时，当用户对FPR和TPR有不同的重视程度时，这个指标无法满足。</em></p>
+
+<h4 id="log-loss是什么什么时候用log-loss"><strong>Log-loss是什么，什么时候用Log-loss</strong></h4>
+
+<p><em>Log-loss就是Likelihood的负对数，即\(-logP(Y_{gt}\vert X)\)，在分类场景，尤其是关注类别置信度的分类场景时适用。</em></p>
+
+<h4 id="场景相关的问题比如ranking-design的时候用什么metric推荐的时候用什么等"><strong>场景相关的问题，比如ranking design的时候用什么metric，推荐的时候用什么等？</strong></h4>
+
+<p><em>排序任务的指标：</em></p>
+<ul>
+  <li><em>MAP：将排序后，所有relevant position处的precision进行平均</em></li>
+  <li><em>MRR：将Top-1所在rank的倒数作平均</em></li>
+  <li><em>NDCG：DCG就是每个位置的相关性，除以相应位置的对数（排序越往后，重要性越低）。NDCG就是DCG除以DCG的理论最大值。</em></li>
+</ul>
+
+<h4 id="用mse做loss的logistic-regression是convex-problem吗"><strong>用MSE做loss的Logistic Regression是convex problem吗？</strong></h4>
+
+<p><em>不是。证明如下：</em></p>
+
+\[\begin{aligned}
+令f(x) = (y - \hat y)^2, 其中\hat y = \frac{1}{1 + e^{-\theta x}} \\
+则有\frac{\partial f}{\partial \theta} = \frac{\partial f}{\partial \hat y} \frac{\partial \hat y}{\partial \theta} \\
+=-2(y-\hat y)\hat y(1-\hat y)x \\
+=-2(y\hat y - y\hat y ^ 2 - \hat y^2 + \hat y^3)x
+
+\frac{\partial^2 f}{\partial \theta^2} \\
+= -2(y\hat y - y\hat y ^ 2 - \hat y^2 + \hat y^3)x \cdot {\hat y (1 - \hat y)x} \\  
+\\ \because \hat y \in (0, 1)
+\\ \therefore x^2\hat y (1- \hat y) &gt; 0
+\end{aligned}\]
+
+<p><em>在\(y=0\)和\(y=1\)时分别求上式&gt;0的\(\hat y\)的取值范围，可得上式有正有负，所以是non convex的。</em></p>
+
+<h4 id="解释并写出mse的公式什么时候用到mse"><strong>解释并写出MSE的公式，什么时候用到MSE？</strong></h4>
+<p><em>MSE就是Mean Squared Error，即每个样本的预测值与真实值之差的平方的平均值。在回归任务中，假设真实值和观测值的误差服从高斯分布，则会用到MSE，如果误差服从拉普拉斯分布，则用MAE。</em></p>
+
+<h4 id="linear-regression最小二乘法和mse的关系"><strong>Linear Regression最小二乘法和MSE的关系</strong></h4>
+<p><em>最小二乘法就是最小化MSE的一种求解方法。</em></p>
+
+<h4 id="什么是relative-entropy--cross-entropy以及kl-divergence他们的intuition"><strong>什么是relative entropy / cross entropy，以及KL Divergence，他们的intuition</strong></h4>
+<p><em>Relative entropy就是KL Divergence，衡量两个概率分布的差异。</em>\(D_{KL}(P \| Q) = \sum_i P(i)ln\frac{P(i)}{Q(i)}\)</p>
+
+<p><em>KL Divergence和交叉熵：\(D_{KL}(P \| Q) = -S(P) + H(P, Q)\)</em></p>
+
+<h4 id="logistic-regression的loss是什么"><strong>Logistic Regression的Loss是什么？</strong></h4>
+<p><em>Negative Log Likelihood.</em></p>
+
+<h4 id="logistic-regression的loss推导"><strong>Logistic Regression的Loss推导</strong></h4>
+
+\[\begin{aligned}
+令\beta表示模型参数，x_i表示输入，y_i表示正确结果，\delta = \frac{1}{1 + e^{-\beta^Tx_i}}，则有 \\
+p(y_i\vert x_i, \beta) = \delta^{y_i}(1-\delta)^{1-y_i} \\
+
+NLL = -\sum ln(\delta^{y_i}(1-\delta)^{1-y_i}) \\
+
+\frac{\partial NLL}{\partial \beta} = -\sum (y_i \cdot \frac{1}{\delta} \cdot \delta (1-\delta)x_i + (1-y_i) \cdot \frac{1}{1-\delta} \cdot -\delta (1- \delta)x_i )\\
+= -\sum(\delta - y_i)x_i \\
+\end{aligned}\]
+
+<h4 id="svm的loss是什么"><strong>SVM的Loss是什么</strong></h4>
+<p><em>Hinge Loss. \(L = max(0, 1 - ty)\)，其中t为目标值，取值为1或-1，y为预测值。不鼓励模型过度自信。</em></p>
+
+<h4 id="multiclass-logistic-regression然后问了一个为什么用cross-entropy做loss-function"><strong>Multiclass Logistic Regression，然后问了一个为什么用cross entropy做Loss function。</strong></h4>
+<p><em>K个1 vs. others分类器。在Logistics Regression中，优化cross entropy等于优化NLL.</em></p>
+
+<h4 id="decision-tree-split-nodes时的优化目标是啥"><strong>Decision Tree split nodes时的优化目标是啥</strong></h4>
+<p><em>信息增益。</em></p>
+
+<h4 id="dnn为什么要有bias-termbias-term的intuition是什么"><strong>DNN为什么要有bias term，bias term的intuition是什么？</strong></h4>
+<p><em>如果没有bias，则分类超平面则必须经过原点。Bias可以对分类超平面进行平移。</em></p>
+
+<h4 id="什么是back-propagation"><strong>什么是Back propagation?</strong></h4>
+<p><em>Back Propagation是指误差反向传播，是一种对神经网络进行梯度下降的算法，即用链式法则计算损失函数对每层权重的梯度，并据此来更新权重。</em></p>
+
+<h4 id="梯度消失和梯度爆炸是什么怎么解决">梯度消失和梯度爆炸是什么？怎么解决？</h4>
+<p><em>梯度消失和梯度爆炸是训练深层神经网络或者Vanilla RNN时存在的问题。使用Back Propagation算法进行链式求导时，对于靠近输入端的权重，其梯度是每一层权重以及每一层的激活函数的梯度的乘积数，如果梯度较小（如
+使用了不合适的激活函数，如Sigmoid，其导数的取值范围是(0, 0.25))，会导致梯度的值逐层减小，最终消失。梯度消失表现为随着模型训练，loss下降很慢，尤其是离输出层近的权重改变幅度大，离输出层远的权重改变幅度小甚至为0。反之，如果梯度较大，会导致
+梯度逐层指数增加，产生梯度爆炸，表现为loss值和模型权重剧烈变化，甚至变成NaN。</em></p>
+
+<p><em>解决梯度消失问题的方法主要有：更换激活函数为Relu或其变种、增加Residual Connection和使用Batch Norm。</em></p>
+
+<p><em>解决梯度爆炸问题的方法主要有：梯度裁剪、加入正则项、更好的初始化策略等。</em></p>
+
+<h4 id="神经网络初始化能不能把weights都设置成0"><strong>神经网络初始化能不能把weights都设置成0？</strong></h4>
+<p><em>不能，也不能设为相同的值，否则会导致每一层Hidden Layer中各个节点的值完全相同，根据反向传播算法，每个参数更新的值也相同，无法正常学习特征。</em></p>
+
+<h4 id="dnn和logistic-regression区别"><strong>DNN和Logistic Regression区别</strong></h4>
+<p><em>可以把Logistic Regression看成一个只有一层的神经网络，只能学习特征各自的权重（有可解释性），并将特征的加权和通过sigmoid函数进行二分类。</em></p>
+
+<h4 id="你为什么觉得dnn拟合能力比logistic-regression强"><strong>你为什么觉得DNN拟合能力比Logistic Regression强？</strong></h4>
+<p><em>因为DNN可以学习特征的组合关系，而Logistic Regression只能学习特征各自的权重。</em></p>
+
+<h4 id="how-to-do-hyper-parameter-tuning-in-dl"><strong>How to do hyper-parameter tuning in DL?</strong></h4>
+<p><em>可以通过Grid Search的方法进行，也有一些AutoML的方法，如贝叶斯优化。</em></p>
+
+<h4 id="deep-learning有哪些预防over-fitting的方法"><strong>Deep Learning有哪些预防over fitting的方法？</strong></h4>
+<p><em>Weight Decay、Dropout、Pretrain + Finetune、Early Stopping、数据增强等。</em></p>
+
+<h4 id="什么是dropoutwhy-it-works-dropout的流程是什么"><strong>什么是Dropout？Why it works? Dropout的流程是什么？</strong></h4>
+<p><em>Dropout是一种在训练深度神经网络时防止过拟合的方法。在训练阶段的前向过程中，通过将hidden layer的值直接设为0的方式，忽略一部分的隐藏层神经元。这部分神经元不产生梯度传播。在推理阶段则保留全部的隐藏层神经元，并将神经元的输出进行Rescale。</em></p>
+
+<p><em>Dropout有效果，一方面是在训练的时候迫使每个神经元的取值不依赖于任何一个特定的其它神经元，降低了网络的复杂度。如果把不同的dropout看成是不同的子网络，也体现一种集成学习的思想。</em></p>
+
+<h4 id="什么是batch-normwhy-it-works-bn的流程是什么"><strong>什么是Batch Norm？Why it works? BN的流程是什么？</strong></h4>
+<p><em>BN是一种用于神经网络的Regularization技术，目的是解决神经网络中的Internal covariate shift的问题，即随着神经网络的训练，权重的分布发生变化，导致输出给下一层的特征的分布发生变化，而这个变化需要下一层的网络权重额外学习。</em></p>
+
+<p><em>BN包括两个阶段，归一化和scale and shift。它学习两个参数，\(\gamma\)和\(\beta\)。在训练阶段，对每个mini batch的输入，BN层计算其均值和标准差，并将其归一化到标准正态分布。然后通过使用学习到的\(\gamma\)和\(\beta\)进行缩放和平移。</em></p>
+
+<p><em>在推理阶段，因为只有一个样本的输入，无法计算均值和方差，所以在训练的时候会同时记录训练样本的均值和方差。训练样本的均值和方差一般通过滑动平均的方式来更新。</em></p>
+
+<h4 id="common-activation-functions是什么以及每个的优缺点"><strong>common activation functions是什么以及每个的优缺点</strong></h4>
+<p><em>Sigmoid：可以将输入映射到0和1之间的连续输出，可以解释为概率并用于二分类问题。缺点：容易造成梯度消失，且输出不是以0为中心。</em></p>
+
+<p><em>tanh：将输入映射到-1到1之间，产生以0为中心的输出。缺点：计算开销大，且输入远离0的时候，梯度也接近0，容易造成梯度消失。</em></p>
+
+<p><em>ReLU：将负的输入映射为0，正的输入保持不变，简单有效，计算速度快，产生稀疏特征。缺点：输入为负的神经元梯度为0。</em></p>
+
+<p><em>Leaky ReLU: ReLU的改进，输入为负的时候引入一个小的斜率，可以允许梯度的传播。</em></p>
+
+<p><em>还有一些基于ReLU的改进，如引入可学习的参数来控制斜率等。</em></p>
+
+<h4 id="为什么需要non-linear-activation-functions"><strong>为什么需要Non-Linear activation functions？</strong></h4>
+<p><em>如果没有非线性激活函数，则DNN退化成对输入特征的线性变换，不能产生非线性的决策边界。</em></p>
+
+<h4 id="different-optimizers-sgd-rmsprop-momentum-adagrad-adam的区别"><strong>Different Optimizers （SGD, RMSProp, Momentum, Adagrad, Adam）的区别</strong></h4>
+<p><em>SGD是基本的梯度下降算法，每次迭代通过当前样本的梯度更新模型参数。\(\theta_{t+1} = \theta_t - \eta \nabla J(\theta)\) 。SGD（包括Mini-Batch GD)有两个问题：1.容易陷在局部最小值（saddle point或者plateau)。 2.学习率始终固定。动量方法应对问题1，而自适应学习率方法应对问题2。</em></p>
+
+<p><em>Momentum在SGD的基础上增加了动量概念，即在参数更新时，既利用当前Batch的梯度，也保留原有的更新方向，即</em></p>
+
+\[\begin{aligned}
+m_{t+1}=\mu \cdot m_t + \eta \nabla J(\theta); \\
+\theta_{t+1} = \theta_t - m_{t+1}
+\end{aligned}\]
+
+<p><em>Nestrov accelerate gradient是Momentum的变种，具体做法是计算梯度时，先在\(\theta\)上减去上一时刻的动量</em></p>
+
+\[\begin{aligned}
+m_{t+1}=\mu \cdot m_t + \eta \nabla J(\theta - \mu \cdot m_t); \\
+\theta_{t+1} = \theta_t - m_{t+1}
+\end{aligned}\]
+
+<p><em>Adagrad是一种自适应学习率算法，目的是对学习率进行动态调整。在更新梯度时，对每个参数，将全局学习率除以一个基于梯度累计范数的约束项，这样前期的梯度更新量较大，后期梯度更新量较小。频繁更新的参数梯度更新量较小，稀疏更新的参数梯度更新量较大。</em></p>
+
+\[\theta_{t+1, i} = \theta_{t, i} - \frac{\eta}{\sqrt{G_{t, i} + \epsilon}} \cdot \nabla J(\theta_{t,i})\]
+
+<p><em>Adagrad的问题是到了训练中后期，因为约束项分母过大，导致参数更新量太小，无法学习。RMSProp将不断累计的梯度更新量之和改为RMS形式的梯度移动平均。</em></p>
+
+\[\begin{aligned}
+E[g^2]_t = \rho \cdot E[g^2]_{t-1} + (1-\rho) \cdot g_t^2 \\
+\theta_{t+1} = \theta_{t} - \frac{\eta}{\sqrt{E[g^2]_t + \epsilon}} \cdot \nabla J(\theta_{t})  = \theta_t - \frac{\eta}{RMS[g]_t}\cdot \nabla J(\theta_{t}) 
+\end{aligned}\]
+
+<p><em>Adadelta将RMSProp中的固定学习率参数\(\eta\)转换为上一时刻的\(\Delta \theta\)的RMS，不需要指定固定的学习率。(Pytorch中的adadelta优化器有学习率参数lr，但它是可选参数，默认值是1.0，相当于对自适应梯度再做一次scale）。</em></p>
+
+\[\theta_{t+1} = \theta_t - \frac{RMS[\Delta(\theta)]_{t-1}}{RMS[g]_t}\cdot \nabla J(\theta_{t})\]
+
+<p><em>Adam优化器可以看作是动量和自适应学习率的结合，类似RMSProp + Momentum。Adam保留过去梯度的指数衰减平均值，也保留梯度的平方的指数衰减平均值：</em></p>
+
+\[\begin{aligned}
+m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\
+v_t = \beta_2 v_{t-1} + (1-\beta_2)g^2_t \\
+\hat m_t = \frac{m_t}{1-\beta^t_1} \\
+\hat v_t = \frac{v_t}{1-\beta^t_2} \\
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t + \epsilon}} \cdot \hat m_t
+\end{aligned}\]
+
+<p><em>目前主流的优化器是AdamW，即增加了WeightDecay的Adam优化器。AdamW优化器将参数权重的decay从梯度计算中分离出去，单独基于L2正则化计算权重衰减。</em></p>
+
+<h4 id="batch和sgd的优缺点batch-size的影响"><strong>Batch和SGD的优缺点，Batch size的影响</strong></h4>
+<p><em>Batch GD（区别于Mini Batch GD）是一次性迭代所有的训练样本，而SGD是每次迭代一个训练样本，Mini-Batch GD是两者的折中，通过超参数Batch Size控制每次迭代的样本数量。</em></p>
+
+<p><em>BGD优点是较为稳定，缺点是每次迭代完整的数据集，速度较慢，且无法应用到大数据集上；</em></p>
+
+<p><em>SGD的优点是计算成本低，内存需求小，缺点是受噪声影响大，更新方向的方差较大，收敛过程不稳定且对学习率敏感。</em></p>
+
+<p><em>Mini Batch作为两者的折中，是主流的方案，可以通过一个mini-batch中的样本近似整体梯度，减少更新方向的方差，更新更稳定，也可以通过并行化来提升计算效率。</em></p>
+
+<p><em>Batch Size的影响主要是内存/显存的占用量，同时，batch size发生变化时，学习率也要相应调整。</em></p>
+
+<h4 id="learning-rate过大和过小对模型的影响"><strong>learning rate过大和过小对模型的影响</strong></h4>
+<p><em>学习率设置过大时，容易出现梯度爆炸的问题，也容易产生Loss的震荡。学习率设置过小时，会使得模型的收敛速度太慢，且容易陷入局部最小值无法跳出。主流的做法会对学习率进行warmup和衰减。</em></p>
+
+<h4 id="problem-of-plateau-saddle-point"><strong>Problem of Plateau, Saddle point</strong></h4>
+<p><em>Problem of Plateau是指目标函数在一个区域内非常平坦，梯度接近0。而saddle point指的是目标函数在某个区域梯度为0，但并非局部最小值（在某些维度上升，某些维度下降）。可以通过基于动量的优化器，以及自适应学习率解决这两个问题。</em></p>
+
+<h4 id="when-transfer-learning-makes-sense"><strong>When transfer learning makes sense.</strong></h4>
+<p><em>迁移学习是将在一个任务上学习到的知识（模型参数）应用到另一个任务上，当新的任务有监督数据较少，且和原任务有类似的原始输入特征时有效。如把基于ImageNet训练的CNN权重作为其它分类任务的
+初始值，或者NLP领域的Pretrain + Finetune以及Prompt Tuning两个Paradigm，都能看成是迁移学习的成功应用。</em></p>
+
+  </article>
+
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2025/mountains/">山不在高，有仙则名</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/install_ml_env/">Linux机器上安装和配置nvidia-docker训练环境操作指南</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/quick_pow_mod_conbination_mod/">高效计算幂取模和组合数取模</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/common_ml_problems_3_of_3/">试答机器学习理论知识中的一些常见问题 (3 / 3)</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/common_ml_problems_2_of_3/">试答机器学习理论知识中的一些常见问题 (2 / 3)</a>
+  </li>
+
+</div>
+
+    </div>
+
+    <!-- Footer -->    <footer class="sticky-bottom mt-5">
+      <div class="container">
+        © Copyright 2025 Peng  Haoyuan. 
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>
