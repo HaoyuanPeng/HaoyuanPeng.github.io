@@ -15,14 +15,13 @@
       institution: Software School of Fudan University
       year: 2015 - 2018
       description:
-        - Under the supervision of Professor Zheng Xiaoqing, my main research areas included Parsing and Word Embeddings, with results published at AAAI-17 and AAAI-18.
+        - Under the supervision of Professor Zheng Xiaoqing, with results published at AAAI-17 and AAAI-18.
         - Recognized as an Outstanding Graduate of Shanghai in 2018.
     - title: Bachelor's degree, Computer Software Engineering
       institution: Software School of Fudan University
       year: 2011 - 2015
       description:
-        - Under the supervision of Professor Zheng Xiaoqing, my main research area was Parsing, with results published at IJCAI-15.
-        - Completed the Fudan University Undergraduate Research Project (Denghui Program) under the supervision of Professor Zheng Xiaoqing.
+        - Completed the Fudan University Undergraduate Research Project (Denghui Program), with results published at IJCAI-15.
 
 - title: Experience
   type: time_table
@@ -40,27 +39,21 @@
         - Conducted research on enhancing the reasoning error detection capabilities of LLMs through Chain-of-Thought (CoT) technology, and co-first authored the research findings published at IJCAI-24.
         - Trained large-scale models ranging from 7B to 70B parameters for real-world systems in the education domain. Applications include directly grading students' mathematical free-response answers and translating student responses into internally defined languages.
         - Investigated OCR result correction algorithms for scenarios involving student responses, effectively addressing the challenge of distinguishing between student writing errors and OCR recognition errors.
-        - Evaluated as Excellent in the performance assessment of probation period.
     - title: Senior Researcher
       institution: Tencent, Shanghai, China
       year: 2018.07 - 2022.12
       description:
         - Led the development of multiple video information extraction algorithms within the <b>Yunzhi Media AI Platform</b>, including key information extraction from video frames, video tagging, and error correction for ASR/OCR. The video tagging algorithm achieved the second place in the AIWIN 2021 Algorithm Technology Competition without using the competition's training data.
         - Responsible for the development of NLP algorithms as part of the <b>Public Opinion Analysis System</b>, tailored for securities industry regulators.
-        - Implemented traditional ML algorithms and deep learning-based NLP algorithms on the <b>Tencent TI-ONE ML Platform</b>, enabling users to train models on their custom data.
+        - Implemented traditional ML and deep learning-based NLP algorithms on the <b>Tencent TI-ONE ML Platform</b>.
         - Rated as Five-Star Performance once and Four-Star Performance twice in performance assessments.
-    - title: Data Analyst Intern
-      institution: eBay, Shanghai, China
-      year: 2014 - 2015
-
 
 - title: Skills
   type: list
   contents:
     - Proficient in conducting cutting-edge research in natural language processing, with a track record of publishing papers in top conferences.
     - Experienced in all aspects of the full life cycle of AI/ML projects, including training, inference, engineering, and integration.
-    - Highly skilled in Python programming, capable of writing high-quality python codes.
-    - Familiar with Docker, capable of effectively deploying applications, managing versions, and migrating to enhance development efficiency.
+    - Highly skilled in Python programming, capable of writing high-quality code.
 
 - title: Service
   type: list
@@ -104,11 +97,6 @@
       institution: >
         Qiao, Lingfeng  and Wu, Chen  and Liu, Ye  and <b>Peng, Haoyuan</b> and Yin, Di  and Ren, Bo.
         <i>Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing: Industry Track.</i>
-    - title: "Detecting Abnormal Start-Ups, Unusual Resource Consumptions of the Smart Phone: A Deep Learning Approach"
-      year: 2019
-      institution: >
-        ZHENG, Xiaoqing and LU, Yaping and <b>PENG, Haoyuan</b> and FENG, Jiangtao and ZHOU, Yi and JIANG, Min and MA, Li and ZHANG, Ji and JI, Jie.
-        <i>ZTE Communications.</i>
     - title: "Attention-based belief or disbelief feature extraction for dependency parsing"
       year: 2018
       institution: >
