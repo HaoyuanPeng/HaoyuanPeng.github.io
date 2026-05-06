@@ -11,17 +11,12 @@
 - title: Education
   type: time_table
   contents:
-    - title: Master's degree, Computer Science
-      institution: Software School of Fudan University
-      year: 2015 - 2018
+    - title: B.S. & M.S., Computer Science
+      institution: Fudan University
+      year: 2011 - 2018
       description:
-        - Under the supervision of Professor Zheng Xiaoqing, with results published at AAAI-17 and AAAI-18.
+        - Supervised by Prof. Xiaoqing Zheng; published at IJCAI-15, AAAI-17, and AAAI-18.
         - Recognized as an Outstanding Graduate of Shanghai in 2018.
-    - title: Bachelor's degree, Computer Software Engineering
-      institution: Software School of Fudan University
-      year: 2011 - 2015
-      description:
-        - Completed the Fudan University Undergraduate Research Project (Denghui Program), with results published at IJCAI-15.
 
 - title: Experience
   type: time_table
@@ -58,8 +53,7 @@
 - title: Service
   type: list
   contents:
-    - <b>Conference Reviewer:</b> KDD-23, EMNLP-23, SDM-24, COLING-24, ACL-24, MM-24
-    - <b>External Reviewer:</b> ACL-23, ECAI-23
+    - <b>Reviewer:</b> KDD-23, EMNLP-23, ACL-23/24, ECAI-23, SDM-24, COLING-24, MM-24
 
 - title: Honors and Awards
   type: time_table

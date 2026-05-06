@@ -11,17 +11,12 @@
 - title: 教育经历
   type: time_table
   contents:
-    - title: 硕士
-      institution: 复旦大学软件学院
-      year: 2015.09 - 2018.06
+    - title: 学士 & 硕士
+      institution: 复旦大学
+      year: 2011.09 - 2018.06
       description:
-        - 师从郑骁庆教授，研究成果发表于AAAI-17和AAAI-18。
+        - 师从郑骁庆教授，研究成果发表于IJCAI-15、AAAI-17和AAAI-18。
         - 被评为2018年上海市优秀毕业生。
-    - title: 学士
-      institution: 复旦大学软件学院
-      year: 2011.09 - 2015.07
-      description:
-        - 完成复旦大学本科生科研项目（登辉计划），研究成果发表于IJCAI-15。
 
 - title: 工作经历
   type: time_table
@@ -59,8 +54,7 @@
 - title: 其它经历
   type: list
   contents:
-    - 担任下列会议的审稿人：KDD-23、EMNLP-23、SDM-24、COLING-24、ACL-24、MM-24
-    - 担任下列会议的外部审稿人或第二审稿人：ACL-23、ECAI-23
+    - 担任下列会议的审稿人：KDD-23、EMNLP-23、ACL-23/24、ECAI-23、SDM-24、COLING-24、MM-24
 
 - title: 获奖情况
   type: time_table

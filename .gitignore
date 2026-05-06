@@ -9,6 +9,7 @@ _site
 Gemfile.lock
 vendor
 
+/.idea/
 /.idea/workspace.xml
 /.idea/.gitignore
 /.idea/misc.xml
