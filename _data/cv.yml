@@ -46,14 +46,10 @@
 - title: Skills
   type: list
   contents:
-    - Proficient in conducting cutting-edge research in natural language processing, with a track record of publishing papers in top conferences.
+    - Proficient in conducting cutting-edge research in natural language processing, with a track record of publishing papers in top conferences and over 140 citations.
     - Experienced in all aspects of the full life cycle of AI/ML projects, including training, inference, engineering, and integration.
     - Highly skilled in Python programming, capable of writing high-quality code.
-
-- title: Service
-  type: list
-  contents:
-    - <b>Reviewer:</b> KDD-23, EMNLP-23, ACL-23/24, ECAI-23, SDM-24, COLING-24, MM-24
+    - Served as a reviewer for KDD, EMNLP, ACL, ECAI, SDM, COLING, and MM.
 
 - title: Honors and Awards
   type: time_table
@@ -64,9 +60,6 @@
     - year: 2020
       items:
         - Tencent New Code Culture Award - Award for outstanding internal open source code projects
-    - year: 2018
-      items:
-        - Outstanding Graduate in Shanghai
 
 - title: Publications
   type: time_table

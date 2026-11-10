@@ -47,14 +47,10 @@
 - title: 技术能力
   type: list
   contents:
-    - 持续跟进NLP领域的前沿研究，有在主流学术会议发表论文的经验。
+    - 持续跟进NLP领域的前沿研究，有在主流学术会议发表论文的经验，论文被引用140+次。
     - 富有将算法落地于实际工业问题的成功经验，熟悉模型训练、推理、封装和集成的生命周期。
     - 精通Python语言，能写出高质量的代码。曾主导团队内的代码规范和质量建设。
-
-- title: 其它经历
-  type: list
-  contents:
-    - 担任下列会议的审稿人：KDD-23、EMNLP-23、ACL-23/24、ECAI-23、SDM-24、COLING-24、MM-24
+    - 担任过KDD、EMNLP、ACL、ECAI、SDM、COLING、MM等会议的审稿人。
 
 - title: 获奖情况
   type: time_table
@@ -65,9 +61,6 @@
     - year: 2020
       items: 
         - 腾讯新代码文化奖（表彰优秀内部开源项目的奖项）
-    - year: 2018
-      items:
-        - 上海市优秀毕业生
 
 - title: Publications
   type: time_table
