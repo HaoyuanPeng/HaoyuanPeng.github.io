@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: mountains
 title: 山不在高，有仙则名
 date: 2025-01-26 11:13:00 +0800
 description: 自己的登山记录
