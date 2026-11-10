@@ -1,1 +1,136 @@
-(()=>{"use strict";function e(e,t){p=e.index,l.querySelectorAll("button").forEach(e=>e.setAttribute("aria-pressed",String(Number(e.dataset.index)===p)));const n=m.get(e.index);if(n&&t&&(d.setView(n.getLatLng(),e.location.approximate?7:10),n.openPopup()),!t){const t=l.querySelector(`[data-index="${e.index}"]`);t&&t.scrollIntoView({block:"nearest",behavior:"smooth"})}}function t(){d&&("china"===r.value?d.fitBounds(x,{padding:[12,12]}):g.some(e=>e.location)&&d.fitBounds(g.filter(e=>e.location).map(e=>[e.location.lat,e.location.lng]),{padding:[30,30],maxZoom:8}))}function n(){const t=c.value.trim().toLowerCase();if(g=i.filter(e=>("world"===r.value||("overseas"===r.value?e.location&&e.location.overseas:!(e.location&&e.location.overseas)))&&[e.name,e.date,e.note,e.region].join(" ").toLowerCase().includes(t)),l.replaceChildren(),u&&u.clearLayers(),m.clear(),document.getElementById("mountains-count").textContent=`${g.length} \u6761 \xb7 ${g.filter(e=>e.location).length} \u5904\u843d\u70b9`,!g.length){const e=document.createElement("p");e.className="mountains-empty",e.textContent="\u6682\u65e0\u5339\u914d\u7684\u8bb0\u5f55",l.append(e)}g.slice().reverse().forEach(t=>{const n=document.createElement("button");n.type="button",n.className="mountains-row",n.dataset.index=t.index,n.setAttribute("aria-pressed",String(p===t.index));const o=document.createElement("span");o.className="mountains-row-title";const a=document.createElement("i");a.className="fas fa-mountain mountains-row-icon",a.setAttribute("aria-hidden","true"),o.append(a,document.createTextNode(t.name));const i=document.createElement("span");i.className="mountains-row-meta",i.textContent=[t.altitude,t.date].filter(Boolean).join(" \xb7 ");const r=document.createElement("span");if(r.className="mountains-row-note",r.textContent=[t.region,t.location&&t.location.approximate&&"\u5927\u81f4\u4f4d\u7f6e",!t.location&&"\u4f4d\u7f6e\u5f85\u8865\u5145",t.note].filter(Boolean).join(" \xb7 "),n.append(o,i,r),n.addEventListener("click",()=>e(t,!0)),l.append(n),!d||!t.location)return;const c=document.createElement("div");c.className="mountains-popup";const s=document.createElement("h3");s.textContent=t.name,c.append(s),[t.altitude,t.date,t.note].filter(Boolean).forEach(e=>{const t=document.createElement("p");t.textContent=e,c.append(t)});const g=document.createElement("small");g.textContent=`${t.location.region} \xb7 ${t.location.approximate?"\u5927\u81f4\u4f4d\u7f6e\uff08\u533a\u57df\u793a\u610f\u70b9\uff09":"\u7ea6\u7565\u4f4d\u7f6e"}`,c.append(g);const h=L.divIcon({className:"mountains-marker",html:'<i class="fas fa-mountain" aria-hidden="true"></i>',iconSize:[26,26],iconAnchor:[13,23],popupAnchor:[0,-22]}),x=L.marker([t.location.lat,t.location.lng],{icon:h,title:t.name,alt:t.name}).bindPopup(c).bindTooltip(t.name).addTo(u);x.on("click",()=>e(t,!1)),m.set(t.index,x)})}const o=JSON.parse(document.getElementById("mountains-locations").textContent),a=document.getElementById("mountains-source"),i=Array.from(a.querySelectorAll("tbody tr")).map((e,t)=>{const[n,a,i,l]=Array.from(e.cells,e=>e.textContent.trim()),r=o[n],c=r&&Number.isFinite(r.lat)&&Number.isFinite(r.lng)?r:null;return r&&"attempt"===r.kind||/\u5931\u8d25|\u672a\u767b\u9876|\u4e0d\u5f00\u653e\u767b\u9876|\u672a\u5f00\u653e\u767b\u9876/.test(l)?(e.remove(),null):{index:t,name:n,altitude:a,date:i,note:l,location:c,region:r&&r.region}}).filter(Boolean);a.querySelectorAll("table").forEach(e=>{e.querySelector("tbody tr")||(e.previousElementSibling&&e.previousElementSibling.matches("h2")&&e.previousElementSibling.remove(),e.remove())});const l=document.getElementById("mountains-list"),r=document.getElementById("mountains-scope"),c=document.getElementById("mountains-search"),s=document.getElementById("mountains-map-status"),m=new Map;let d,u,p,g=[],h=0;const x=[[18,73],[54,135]];if(document.getElementById("mountains-stats").textContent=`${i.length} \u6761\u5c71\u884c\u8db3\u8ff9`,window.L){(d=L.map("mountains-map",{scrollWheelZoom:!0,touchZoom:!0,wheelPxPerZoomLevel:30,wheelDebounceTime:20,minZoom:2,maxZoom:16,zoomSnap:.25})).on("resize",t),u=L.layerGroup().addTo(d);const e=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});e.on("tileerror",()=>{h+=1,s.hidden=!1,s.textContent="\u90e8\u5206\u5e95\u56fe\u672a\u80fd\u52a0\u8f7d\uff0c\u5c71\u5cf0\u6807\u8bb0\u53ca\u8bb0\u5f55\u4ecd\u53ef\u67e5\u770b\u3002"}),e.on("load",()=>{h||(s.hidden=!0)}),e.addTo(d),L.control.scale({imperial:!1}).addTo(d),a.closest("details").open=!1}else s.textContent="\u5730\u56fe\u7ec4\u4ef6\u672a\u80fd\u52a0\u8f7d\uff0c\u8bf7\u7a0d\u540e\u5237\u65b0\u3002\u5b8c\u6574\u8bb0\u5f55\u4ecd\u53ef\u67e5\u770b\u3002";c.addEventListener("input",n),r.addEventListener("change",()=>{n(),t()}),document.getElementById("mountains-reset").addEventListener("click",t),n(),t()})();
+(() => {
+  'use strict';
+  const locations = JSON.parse(document.getElementById('mountains-locations').textContent);
+  const source = document.getElementById('mountains-source');
+  const records = Array.from(source.querySelectorAll('tbody tr')).map((row, index) => {
+    const [name, altitude, date, note] = Array.from(row.cells, cell => cell.textContent.trim());
+    const place = locations[name];
+    const location = place && Number.isFinite(place.lat) && Number.isFinite(place.lng) ? place : null;
+    if ((place && place.kind === 'attempt') || /失败|未登顶|不开放登顶|未开放登顶/.test(note)) {
+      row.remove();
+      return null;
+    }
+    return { index, name, altitude, date, note, location, region: place && place.region };
+  }).filter(Boolean);
+  source.querySelectorAll('table').forEach(table => {
+    if (table.querySelector('tbody tr')) return;
+    if (table.previousElementSibling && table.previousElementSibling.matches('h2')) table.previousElementSibling.remove();
+    table.remove();
+  });
+  const list = document.getElementById('mountains-list');
+  const scope = document.getElementById('mountains-scope');
+  const search = document.getElementById('mountains-search');
+  const status = document.getElementById('mountains-map-status');
+  const markers = new Map();
+  let map, layer, selected;
+  let visible = [];
+  let tileErrors = 0;
+  const chinaBounds = [[18, 73], [54, 135]];
+  document.getElementById('mountains-stats').textContent = `${records.length} 条山行足迹`;
+
+  function selectRecord(record, focusMap) {
+    selected = record.index;
+    list.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.index) === selected)));
+    const marker = markers.get(record.index);
+    if (marker && focusMap) {
+      map.setView(marker.getLatLng(), record.location.approximate ? 7 : 10);
+      marker.openPopup();
+    }
+    if (!focusMap) {
+      const button = list.querySelector(`[data-index="${record.index}"]`);
+      if (button) button.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
+
+  function fitMap() {
+    if (!map) return;
+    if (scope.value === 'china') map.fitBounds(chinaBounds, { padding: [12, 12] });
+    else if (visible.some(r => r.location)) map.fitBounds(visible.filter(r => r.location).map(r => [r.location.lat, r.location.lng]), { padding: [30, 30], maxZoom: 8 });
+  }
+
+  function render() {
+    const query = search.value.trim().toLowerCase();
+    visible = records.filter(r => (scope.value === 'world' || (scope.value === 'overseas' ? r.location && r.location.overseas : !(r.location && r.location.overseas))) && [r.name, r.date, r.note, r.region].join(' ').toLowerCase().includes(query));
+    list.replaceChildren();
+    if (layer) layer.clearLayers();
+    markers.clear();
+    document.getElementById('mountains-count').textContent = `${visible.length} 条 · ${visible.filter(r => r.location).length} 处落点`;
+    if (!visible.length) {
+      const empty = document.createElement('p');
+      empty.className = 'mountains-empty';
+      empty.textContent = '暂无匹配的记录';
+      list.append(empty);
+    }
+    visible.slice().reverse().forEach(record => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'mountains-row';
+      button.dataset.index = record.index;
+      button.setAttribute('aria-pressed', String(selected === record.index));
+      const title = document.createElement('span');
+      title.className = 'mountains-row-title';
+      const dot = document.createElement('i');
+      dot.className = 'fas fa-mountain mountains-row-icon';
+      dot.setAttribute('aria-hidden', 'true');
+      title.append(dot, document.createTextNode(record.name));
+      const meta = document.createElement('span');
+      meta.className = 'mountains-row-meta';
+      meta.textContent = [record.altitude, record.date].filter(Boolean).join(' · ');
+      const note = document.createElement('span');
+      note.className = 'mountains-row-note';
+      note.textContent = [record.region, record.location && record.location.approximate && '大致位置', !record.location && '位置待补充', record.note].filter(Boolean).join(' · ');
+      button.append(title, meta, note);
+      button.addEventListener('click', () => selectRecord(record, true));
+      list.append(button);
+      if (!map || !record.location) return;
+      const popup = document.createElement('div');
+      popup.className = 'mountains-popup';
+      const heading = document.createElement('h3');
+      heading.textContent = record.name;
+      popup.append(heading);
+      [record.altitude, record.date, record.note].filter(Boolean).forEach(text => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        popup.append(p);
+      });
+      const accuracy = document.createElement('small');
+      accuracy.textContent = `${record.location.region} · ${record.location.approximate ? '大致位置（区域示意点）' : '约略位置'}`;
+      popup.append(accuracy);
+      const icon = L.divIcon({ className: 'mountains-marker', html: '<i class="fas fa-mountain" aria-hidden="true"></i>', iconSize: [26, 26], iconAnchor: [13, 23], popupAnchor: [0, -22] });
+      const marker = L.marker([record.location.lat, record.location.lng], { icon, title: record.name, alt: record.name }).bindPopup(popup).bindTooltip(record.name).addTo(layer);
+      marker.on('click', () => selectRecord(record, false));
+      markers.set(record.index, marker);
+    });
+  }
+
+  if (window.L) {
+    map = L.map('mountains-map', {
+      scrollWheelZoom: true,
+      touchZoom: true,
+      wheelPxPerZoomLevel: 30,
+      wheelDebounceTime: 20,
+      minZoom: 2,
+      maxZoom: 16,
+      zoomSnap: .25
+    });
+    map.on('resize', fitMap);
+    layer = L.layerGroup().addTo(map);
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' });
+    tiles.on('tileerror', () => {
+      tileErrors += 1;
+      status.hidden = false;
+      status.textContent = '部分底图未能加载，山峰标记及记录仍可查看。';
+    });
+    tiles.on('load', () => { if (!tileErrors) status.hidden = true; });
+    tiles.addTo(map);
+    L.control.scale({ imperial: false }).addTo(map);
+    source.closest('details').open = false;
+  } else {
+    status.textContent = '地图组件未能加载，请稍后刷新。完整记录仍可查看。';
+  }
+  search.addEventListener('input', render);
+  scope.addEventListener('change', () => { render(); fitMap(); });
+  document.getElementById('mountains-reset').addEventListener('click', fitMap);
+  render();
+  fitMap();
+})();
