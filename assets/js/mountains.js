@@ -5,16 +5,16 @@
   const records = Array.from(source.querySelectorAll('tbody tr')).map((row, index) => {
     const [name, altitude, date, note] = Array.from(row.cells, cell => cell.textContent.trim());
     const place = locations[name];
-    const location = Number.isFinite(place?.lat) && Number.isFinite(place?.lng) ? place : null;
-    if (place?.kind === 'attempt' || /失败|未登顶|不开放登顶|未开放登顶/.test(note)) {
+    const location = place && Number.isFinite(place.lat) && Number.isFinite(place.lng) ? place : null;
+    if ((place && place.kind === 'attempt') || /失败|未登顶|不开放登顶|未开放登顶/.test(note)) {
       row.remove();
       return null;
     }
-    return { index, name, altitude, date, note, location, region: place?.region };
+    return { index, name, altitude, date, note, location, region: place && place.region };
   }).filter(Boolean);
   source.querySelectorAll('table').forEach(table => {
     if (table.querySelector('tbody tr')) return;
-    if (table.previousElementSibling?.matches('h2')) table.previousElementSibling.remove();
+    if (table.previousElementSibling && table.previousElementSibling.matches('h2')) table.previousElementSibling.remove();
     table.remove();
   });
   const list = document.getElementById('mountains-list');
@@ -36,7 +36,10 @@
       map.setView(marker.getLatLng(), record.location.approximate ? 7 : 10);
       marker.openPopup();
     }
-    if (!focusMap) list.querySelector(`[data-index="${record.index}"]`)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    if (!focusMap) {
+      const button = list.querySelector(`[data-index="${record.index}"]`);
+      if (button) button.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
   }
 
   function fitMap() {
@@ -47,9 +50,9 @@
 
   function render() {
     const query = search.value.trim().toLowerCase();
-    visible = records.filter(r => (scope.value === 'world' || (scope.value === 'overseas' ? r.location?.overseas : !r.location?.overseas)) && [r.name, r.date, r.note, r.region].join(' ').toLowerCase().includes(query));
+    visible = records.filter(r => (scope.value === 'world' || (scope.value === 'overseas' ? r.location && r.location.overseas : !(r.location && r.location.overseas))) && [r.name, r.date, r.note, r.region].join(' ').toLowerCase().includes(query));
     list.replaceChildren();
-    layer?.clearLayers();
+    if (layer) layer.clearLayers();
     markers.clear();
     document.getElementById('mountains-count').textContent = `${visible.length} 条 · ${visible.filter(r => r.location).length} 处落点`;
     if (!visible.length) {
@@ -75,7 +78,7 @@
       meta.textContent = [record.altitude, record.date].filter(Boolean).join(' · ');
       const note = document.createElement('span');
       note.className = 'mountains-row-note';
-      note.textContent = [record.region, record.location?.approximate && '大致位置', !record.location && '位置待补充', record.note].filter(Boolean).join(' · ');
+      note.textContent = [record.region, record.location && record.location.approximate && '大致位置', !record.location && '位置待补充', record.note].filter(Boolean).join(' · ');
       button.append(title, meta, note);
       button.addEventListener('click', () => selectRecord(record, true));
       list.append(button);
