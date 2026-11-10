@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>各省最高峰 | Peng  Haoyuan</title>
+    <meta name="author" content="Peng  Haoyuan">
+    <meta name="description" content="全国34个省级行政区的最高峰与我的登顶足迹">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://haoyuanpeng.github.io/blog/2026/province-highpoints/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Peng </span>Haoyuan</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv_zh/">中文简历</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="/assets/css/mountains.css">
+<section class="mountains" aria-labelledby="mountains-title">
+  <header class="mountains-heading">
+    <div>
+<p class="mountains-eyebrow">省域之巅</p>
+<h1 id="mountains-title">各省最高峰</h1>
+</div>
+    <p class="mountains-stats" id="mountains-stats"></p>
+  </header>
+  <nav class="mountains-links" aria-label="登山地图"><a href="/blog/2025/mountains/">山行足迹</a><a href="/blog/2026/province-highpoints/" aria-current="page">各省最高峰</a></nav>
+  <div class="mountains-toolbar">
+    <label class="mountains-search"><i class="fas fa-search" aria-hidden="true"></i><input id="mountains-search" type="search" placeholder="搜索山峰、日期、备注" aria-label="搜索登山记录"></label>
+    
+    <label class="mountains-filter">状态 <select id="mountains-scope"><option value="all">全部</option>
+<option value="climbed">已登顶</option>
+<option value="unclimbed">未登顶</option></select></label>
+    
+    <button id="mountains-reset" type="button" title="恢复地图范围" aria-label="恢复地图范围"><i class="fas fa-expand" aria-hidden="true"></i></button>
+  </div>
+  <div class="mountains-workspace">
+    <div class="mountains-map-wrap">
+      <div id="mountains-map" aria-label="登山足迹地图"></div>
+      <p id="mountains-map-status" class="mountains-map-status" role="status">地图加载中…</p>
+      <div class="mountains-legend">
+<span><i class="fas fa-mountain" aria-hidden="true"></i>已登顶</span><span class="is-unclimbed"><i class="fas fa-mountain" aria-hidden="true"></i>未登顶</span>
+</div>
+    </div>
+    <aside class="mountains-records" aria-label="登山记录">
+      <div class="mountains-list-heading">
+<h2>山峰记录</h2>
+<span id="mountains-count" aria-live="polite"></span>
+</div>
+      <div id="mountains-list"></div>
+    </aside>
+  </div>
+  <p class="mountains-position-note">地图标记仅作足迹展示。标为“大致位置”的地点按所在区域示意。</p>
+  
+  <div class="mountains-description">
+<h2 id="山川有高处">山川有高处</h2>
+
+<p>从珠穆朗玛峰到杭州湾的大金山岛，记录全国34个省级行政区的最高峰，涵盖省、直辖市、自治区及香港、澳门特别行政区，包括台湾。共有的最高峰分别列入所属地区。</p>
+
+<p>个人登顶经历与时间沿用<a href="/blog/2025/mountains/">山行足迹</a>。</p>
+
+<p>上海按包含海岛的全境口径列大金山岛主峰。甘肃采用团结峰，辽宁采用省生态环境厅介绍的老秃顶子山；不同海拔口径保留在备注中。</p>
+
+<p>资料核对：2026.11.10。坐标仅作地图展示。</p>
+</div>
+  
+  <div id="mountains-ascent-source" hidden>
+<h2 id="2000米以下">2000米以下</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>山峰</th>
+      <th>海拔</th>
+      <th>日期</th>
+      <th>详情</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>正大体育馆台阶</td>
+      <td>10m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>镇江北固山</td>
+      <td>58.5m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>佘山</td>
+      <td>100.8m</td>
+      <td>2025.01.25</td>
+      <td>海拔为2021年8月测绘，上海陆地最高峰</td>
+    </tr>
+    <tr>
+      <td>光华楼</td>
+      <td>142m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>杭州西湖北高峰</td>
+      <td>314m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>白云山摩星岭</td>
+      <td>382m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>香山香炉峰</td>
+      <td>575m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>括苍山</td>
+      <td>1382.4m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>金紫尖</td>
+      <td>1450.8m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>汉拿山三角峰庇护所</td>
+      <td>1500m</td>
+      <td>2025.02.23</td>
+      <td>山顶白鹿潭为韩国最高峰，当天因大雪不开放登顶</td>
+    </tr>
+    <tr>
+      <td>太子尖</td>
+      <td>1558m</td>
+      <td> </td>
+      <td>三尖穿越最高点</td>
+    </tr>
+    <tr>
+      <td>龙王山</td>
+      <td>1587m</td>
+      <td> </td>
+      <td>七尖穿越最高点</td>
+    </tr>
+    <tr>
+      <td>必鲁图峰</td>
+      <td>1611m</td>
+      <td>2015</td>
+      <td>世界上海拔最高的沙峰，位于巴丹吉林沙漠</td>
+    </tr>
+    <tr>
+      <td>清凉峰</td>
+      <td>1787.4m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>黄山莲花峰</td>
+      <td>1864.8m</td>
+      <td> </td>
+      <td>安徽省最高峰</td>
+    </tr>
+    <tr>
+      <td>武功山金顶</td>
+      <td>1918.3m</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>黄茅尖</td>
+      <td>1929m</td>
+      <td>2026.11.07</td>
+      <td>浙江省最高峰</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<h2 id="2000米级">2000米级</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>山峰</th>
+      <th>海拔</th>
+      <th>日期</th>
+      <th>详情</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>华山南峰</td>
+      <td>2154.9m</td>
+      <td>2024.12.14</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>灵山主峰</td>
+      <td>2303m</td>
+      <td>2025.01.11</td>
+      <td>北京最高峰</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<h2 id="3000米级">3000米级</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>山峰</th>
+      <th>海拔</th>
+      <th>日期</th>
+      <th>详情</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>阿克布拉克达坂</td>
+      <td>3820m</td>
+      <td>2016.10</td>
+      <td>乌孙古道徒步最高点</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<h2 id="4000米级">4000米级</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>山峰</th>
+      <th>海拔</th>
+      <th>日期</th>
+      <th>详情</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>艾勒门特达坂</td>
+      <td>4035m</td>
+      <td>2024.10.04</td>
+      <td>夏特大环线徒步最高点</td>
+    </tr>
+    <tr>
+      <td>擦缅垭口</td>
+      <td>4650m</td>
+      <td>2022</td>
+      <td>梅里南北线徒步最高点</td>
+    </tr>
+    <tr>
+      <td>奥太娜</td>
+      <td>约4700m</td>
+      <td>2026.05.05</td>
+      <td>商团打卡点</td>
+    </tr>
+    <tr>
+      <td>结斯沟穿山洞</td>
+      <td>4880m</td>
+      <td>2024.12.07</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>慈坡圣山</td>
+      <td>约4933m</td>
+      <td>2025.05.25</td>
+      <td>宣传海拔5086，实测4933</td>
+    </tr>
+    <tr>
+      <td>耍拉垭口</td>
+      <td>4970m</td>
+      <td>2020</td>
+      <td>他念他翁徒步最高点</td>
+    </tr>
+    <tr>
+      <td>萨武主峰垭口</td>
+      <td>约4980m</td>
+      <td>2025.03.02</td>
+      <td>垭口平台5175m牌子</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<h2 id="5000米级">5000米级</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>山峰</th>
+      <th>海拔</th>
+      <th>日期</th>
+      <th>详情</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>四姑娘山大峰</td>
+      <td>5025m</td>
+      <td>2024.10.27</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>错该达垭口</td>
+      <td>5036m</td>
+      <td>2017</td>
+      <td>亚丁大转山徒步最高点</td>
+    </tr>
+    <tr>
+      <td>岗什卡主峰</td>
+      <td>至5048m</td>
+      <td>2025.04.05</td>
+      <td>踢不动冰了，登顶失败</td>
+    </tr>
+    <tr>
+      <td>四姑娘山二峰</td>
+      <td>5276m</td>
+      <td>2026.06.08</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>哈巴雪山</td>
+      <td>5396m</td>
+      <td>2025.06.02</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>布生贡嘎</td>
+      <td>5512m</td>
+      <td>2025.10.04</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>乞力马扎罗山</td>
+      <td>5895m</td>
+      <td>2020.01.30</td>
+      <td>非洲最高峰</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<h2 id="6000米级">6000米级</h2>
+<p>好日子还在后头呢</p>
+
+<h2 id="7000米以上">7000米以上</h2>
+<p>有梦想谁都了不起</p>
+</div>
+  <details class="mountains-original" open><summary>完整记录表</summary><div id="mountains-source"><table>
+<thead><tr>
+<th>地区</th>
+<th>山峰</th>
+<th>海拔</th>
+<th>资料</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>西藏自治区</td>
+<td>珠穆朗玛峰</td>
+<td>8848.86m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=4" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>新疆维吾尔自治区</td>
+<td>乔戈里峰</td>
+<td>8611m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=5" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>四川省</td>
+<td>贡嘎山</td>
+<td>7508.9m</td>
+<td><a href="https://www.forestry.gov.cn/c/www/lcdt/529413.jhtml" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>青海省</td>
+<td>布喀达坂峰</td>
+<td>6860m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=41" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>云南省</td>
+<td>卡瓦格博峰</td>
+<td>6740m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=22" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>甘肃省</td>
+<td>团结峰</td>
+<td>5808m</td>
+<td><a href="https://www.gswbj.gov.cn/a/2024/09/10/22010.html" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>台湾省</td>
+<td>玉山主峰</td>
+<td>3952m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=405" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>陕西省</td>
+<td>太白山拔仙台</td>
+<td>3767.2m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=39" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>内蒙古自治区</td>
+<td>贺兰山敖包圪垯</td>
+<td>3556.1m</td>
+<td><a href="https://nm.cnr.cn/jiaodiantu/20241114/t20241114_526975073.shtml" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>宁夏回族自治区</td>
+<td>贺兰山敖包圪垯</td>
+<td>3556.1m</td>
+<td><a href="https://www.mct.gov.cn/wlbphone/wlbydd/xxfb/qglb/nx/202301/t20230117_938687.html" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>湖北省</td>
+<td>神农顶</td>
+<td>3106.2m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=32" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>山西省</td>
+<td>五台山叶斗峰</td>
+<td>3061.1m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=38" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>贵州省</td>
+<td>小韭菜坪</td>
+<td>2900.6m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=527" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>河北省</td>
+<td>小五台山东台</td>
+<td>2882m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=429" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>重庆市</td>
+<td>阴条岭</td>
+<td>2796.8m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=528" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>吉林省</td>
+<td>长白山白云峰</td>
+<td>2691m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=42" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>河南省</td>
+<td>老鸦岔垴</td>
+<td>2413.8m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=529" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>北京市</td>
+<td>东灵山主峰</td>
+<td>2303m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=36" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>福建省</td>
+<td>黄岗山</td>
+<td>2160.8m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=410" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>江西省</td>
+<td>黄岗山</td>
+<td>2160.8m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=410" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>广西壮族自治区</td>
+<td>猫儿山</td>
+<td>2141.5m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=35" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>湖南省</td>
+<td>酃峰</td>
+<td>2115.2m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=530" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>浙江省</td>
+<td>黄茅尖</td>
+<td>1929m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=428" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>广东省</td>
+<td>石坑崆</td>
+<td>1902m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=419" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>海南省</td>
+<td>五指山二峰</td>
+<td>1867m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=583" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>安徽省</td>
+<td>黄山莲花峰</td>
+<td>1864.8m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=416" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>黑龙江省</td>
+<td>大秃顶子山</td>
+<td>1690m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=531" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>山东省</td>
+<td>泰山玉皇顶</td>
+<td>1532.7m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=533" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>辽宁省</td>
+<td>老秃顶子山</td>
+<td>1367.3m</td>
+<td><a href="https://sthj.ln.gov.cn/sthj/hjgl/stbh/C63C0B59B52C437D812E712D865B6A0B/index.shtml" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>天津市</td>
+<td>九山顶</td>
+<td>1078.5m</td>
+<td><a href="https://zh.wikipedia.org/wiki/%E5%A4%A9%E6%B4%A5%E5%9C%B0%E7%90%86" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>香港特别行政区</td>
+<td>大帽山</td>
+<td>957m</td>
+<td><a href="https://www.hiking.gov.hk/promote/info/id/OGdwWlNpL1VmT3FQYndjVjljNklCZz09/map_type/2" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>江苏省</td>
+<td>花果山玉女峰</td>
+<td>624.4m</td>
+<td><a href="https://www.peakwiki.org/peak.php?pid=535" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>澳门特别行政区</td>
+<td>叠石塘山</td>
+<td>170.6m</td>
+<td><a href="https://yearbook.gcs.gov.mo/uploads/yearbook_pdf/2020/myb2020c.pdf" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+<tr>
+<td>上海市</td>
+<td>大金山岛主峰</td>
+<td>103.7m</td>
+<td><a href="https://www.shanghai.gov.cn/nw15343/20260526/25e2a8ae7dab4b1ab996c8fcd2c7f350.html" target="_blank" rel="noopener noreferrer">资料</a></td>
+</tr>
+</tbody>
+</table></div></details>
+  <script id="mountains-catalog" type="application/json">[{"province":"西藏自治区","name":"珠穆朗玛峰","elevation":8848.86,"lat":27.98787,"lng":86.92483,"note":"喜马拉雅山脉 · 中国与尼泊尔边界","source":"https://www.peakwiki.org/peak.php?pid=4"},{"province":"新疆维吾尔自治区","name":"乔戈里峰","elevation":8611,"lat":35.88187,"lng":76.51374,"note":"喀喇昆仑山脉 · 中国与巴基斯坦边界","source":"https://www.peakwiki.org/peak.php?pid=5"},{"province":"四川省","name":"贡嘎山","elevation":7508.9,"lat":29.59521,"lng":101.87889,"note":"大雪山主峰 · 采用2023年公布高程","source":"https://www.forestry.gov.cn/c/www/lcdt/529413.jhtml","coordinate_source":"https://www.peakwiki.org/peak.php?pid=7"},{"province":"青海省","name":"布喀达坂峰","elevation":6860,"lat":36.02464,"lng":90.86614,"note":"昆仑山脉 · 青海与新疆交界","source":"https://www.peakwiki.org/peak.php?pid=41"},{"province":"云南省","name":"卡瓦格博峰","elevation":6740,"lat":28.43842,"lng":98.68224,"note":"梅里雪山主峰 · 禁止攀登","source":"https://www.peakwiki.org/peak.php?pid=22"},{"province":"甘肃省","name":"团结峰","elevation":5808,"lat":38.50604,"lng":97.71735,"note":"疏勒南山 · 甘肃与青海交界；部分资料记为5826.8米","source":"https://www.gswbj.gov.cn/a/2024/09/10/22010.html","coordinate_source":"https://www.peakwiki.org/peak.php?pid=8"},{"province":"台湾省","name":"玉山主峰","elevation":3952,"lat":23.47,"lng":120.95728,"note":"玉山山脉","source":"https://www.peakwiki.org/peak.php?pid=405"},{"province":"陕西省","name":"太白山拔仙台","elevation":3767.2,"lat":33.95512,"lng":107.76528,"note":"秦岭主峰","source":"https://www.peakwiki.org/peak.php?pid=39"},{"province":"内蒙古自治区","name":"贺兰山敖包圪垯","elevation":3556.1,"lat":38.83433,"lng":105.94932,"note":"贺兰山主峰 · 与宁夏共列","source":"https://nm.cnr.cn/jiaodiantu/20241114/t20241114_526975073.shtml","coordinate_source":"https://www.peakwiki.org/peak.php?pid=40"},{"province":"宁夏回族自治区","name":"贺兰山敖包圪垯","elevation":3556.1,"lat":38.83433,"lng":105.94932,"note":"贺兰山主峰 · 与内蒙古共列","source":"https://www.mct.gov.cn/wlbphone/wlbydd/xxfb/qglb/nx/202301/t20230117_938687.html","coordinate_source":"https://www.peakwiki.org/peak.php?pid=40"},{"province":"湖北省","name":"神农顶","elevation":3106.2,"lat":31.4401,"lng":110.3073,"note":"神农架","source":"https://www.peakwiki.org/peak.php?pid=32"},{"province":"山西省","name":"五台山叶斗峰","elevation":3061.1,"lat":39.07985,"lng":113.56713,"note":"五台山北台顶","source":"https://www.peakwiki.org/peak.php?pid=38"},{"province":"贵州省","name":"小韭菜坪","elevation":2900.6,"lat":26.85251,"lng":104.69323,"note":"乌蒙山主峰","source":"https://www.peakwiki.org/peak.php?pid=527"},{"province":"河北省","name":"小五台山东台","elevation":2882,"lat":39.94132,"lng":115.04297,"note":"太行山脉","source":"https://www.peakwiki.org/peak.php?pid=429"},{"province":"重庆市","name":"阴条岭","elevation":2796.8,"lat":31.48253,"lng":109.93549,"note":"巫溪县 · 阴条岭国家级自然保护区","source":"https://www.peakwiki.org/peak.php?pid=528"},{"province":"吉林省","name":"长白山白云峰","elevation":2691,"lat":42.01618,"lng":128.03273,"note":"长白山天池西侧 · 中国境内最高峰","source":"https://www.peakwiki.org/peak.php?pid=42"},{"province":"河南省","name":"老鸦岔垴","elevation":2413.8,"lat":34.41891,"lng":110.47918,"note":"灵宝市 · 小秦岭","source":"https://www.peakwiki.org/peak.php?pid=529"},{"province":"北京市","name":"东灵山主峰","ascent_name":"灵山主峰","elevation":2303,"lat":40.03071,"lng":115.45402,"note":"门头沟区 · 东灵山","source":"https://www.peakwiki.org/peak.php?pid=36"},{"province":"福建省","name":"黄岗山","elevation":2160.8,"lat":27.85969,"lng":117.78331,"note":"武夷山主峰 · 与江西共列","source":"https://www.peakwiki.org/peak.php?pid=410"},{"province":"江西省","name":"黄岗山","elevation":2160.8,"lat":27.85969,"lng":117.78331,"note":"武夷山主峰 · 与福建共列","source":"https://www.peakwiki.org/peak.php?pid=410"},{"province":"广西壮族自治区","name":"猫儿山","elevation":2141.5,"lat":25.86629,"lng":110.41271,"note":"兴安县与资源县交界 · 越城岭","source":"https://www.peakwiki.org/peak.php?pid=35"},{"province":"湖南省","name":"酃峰","elevation":2115.2,"lat":26.31347,"lng":114.03689,"note":"炎陵县 · 又名神农峰、斗笠峰","source":"https://www.peakwiki.org/peak.php?pid=530"},{"province":"浙江省","name":"黄茅尖","elevation":1929,"lat":27.89334,"lng":119.18675,"note":"龙泉市 · 洞宫山脉","source":"https://www.peakwiki.org/peak.php?pid=428"},{"province":"广东省","name":"石坑崆","elevation":1902,"lat":24.92786,"lng":112.99098,"note":"阳山县 · 南岭","source":"https://www.peakwiki.org/peak.php?pid=419"},{"province":"海南省","name":"五指山二峰","elevation":1867,"lat":18.89944,"lng":109.7048,"note":"五指山主峰 · 第二指","source":"https://www.peakwiki.org/peak.php?pid=583"},{"province":"安徽省","name":"黄山莲花峰","elevation":1864.8,"lat":30.12745,"lng":118.16598,"note":"黄山最高峰","source":"https://www.peakwiki.org/peak.php?pid=416"},{"province":"黑龙江省","name":"大秃顶子山","elevation":1690,"lat":44.46081,"lng":128.21123,"note":"张广才岭","source":"https://www.peakwiki.org/peak.php?pid=531"},{"province":"山东省","name":"泰山玉皇顶","elevation":1532.7,"lat":36.25703,"lng":117.10305,"note":"泰山主峰","source":"https://www.peakwiki.org/peak.php?pid=533"},{"province":"辽宁省","name":"老秃顶子山","elevation":1367.3,"lat":41.32245,"lng":124.88617,"note":"桓仁与新宾交界；采用省生态环境厅资料，部分榜单另列岗山、花脖子山","source":"https://sthj.ln.gov.cn/sthj/hjgl/stbh/C63C0B59B52C437D812E712D865B6A0B/index.shtml","coordinate_source":"https://www.peakbagger.com/peak.aspx?pid=53244"},{"province":"天津市","name":"九山顶","elevation":1078.5,"lat":40.2,"lng":117.5,"approximate":true,"note":"蓟州区 · 津冀交界","source":"https://zh.wikipedia.org/wiki/天津地理"},{"province":"香港特别行政区","name":"大帽山","elevation":957,"lat":22.41012,"lng":114.1246,"note":"新界中部 · 大帽山郊野公园","source":"https://www.hiking.gov.hk/promote/info/id/OGdwWlNpL1VmT3FQYndjVjljNklCZz09/map_type/2","coordinate_source":"https://www.peakwiki.org/peak.php?pid=534"},{"province":"江苏省","name":"花果山玉女峰","elevation":624.4,"lat":34.65405,"lng":119.28889,"note":"连云港 · 云台山主峰","source":"https://www.peakwiki.org/peak.php?pid=535"},{"province":"澳门特别行政区","name":"叠石塘山","elevation":170.6,"lat":22.12065,"lng":113.5613,"note":"路环岛 · 又名塔石塘山","source":"https://yearbook.gcs.gov.mo/uploads/yearbook_pdf/2020/myb2020c.pdf","coordinate_source":"https://www.peakwiki.org/peak.php?pid=536"},{"province":"上海市","name":"大金山岛主峰","elevation":103.7,"lat":30.6918,"lng":121.4208,"note":"上海全境最高点；佘山为陆地最高峰，另见个人登山记录","source":"https://www.shanghai.gov.cn/nw15343/20260526/25e2a8ae7dab4b1ab996c8fcd2c7f350.html","coordinate_source":"https://mapcarta.com/N4213329485"}]</script>
+  
+</section>
+<script id="mountains-locations" type="application/json">{"正大体育馆台阶":{"lat":31.299,"lng":121.501,"region":"上海"},"镇江北固山":{"lat":32.217,"lng":119.455,"region":"江苏"},"佘山":{"lat":31.096,"lng":121.191,"region":"上海"},"光华楼":{"lat":31.299,"lng":121.503,"region":"上海"},"杭州西湖北高峰":{"lat":30.253,"lng":120.098,"region":"浙江"},"白云山摩星岭":{"lat":23.186,"lng":113.297,"region":"广东"},"香山香炉峰":{"lat":39.99,"lng":116.179,"region":"北京"},"括苍山":{"lat":28.822,"lng":120.929,"region":"浙江"},"金紫尖":{"lat":29.695,"lng":119.198,"region":"浙江"},"汉拿山三角峰庇护所":{"lat":33.384,"lng":126.529,"region":"韩国","overseas":true,"kind":"waypoint"},"太子尖":{"lat":30.039,"lng":118.983,"region":"浙江"},"龙王山":{"lat":30.397,"lng":119.398,"region":"浙江"},"必鲁图峰":{"lat":39.723,"lng":102.449,"region":"内蒙古"},"清凉峰":{"lat":30.102,"lng":118.886,"region":"浙江 / 安徽"},"黄山莲花峰":{"lat":30.126,"lng":118.171,"region":"安徽"},"武功山金顶":{"lat":27.452,"lng":114.173,"region":"江西"},"黄茅尖":{"lat":27.888,"lng":119.176,"region":"浙江"},"华山南峰":{"lat":34.477,"lng":110.085,"region":"陕西"},"灵山主峰":{"lat":40.033,"lng":115.482,"region":"北京"},"阿克布拉克达坂":{"lat":42.53495,"lng":82.3881,"region":"新疆乌孙古道 · 天堂湖南侧"},"艾勒门特达坂":{"lat":42.38,"lng":80.54,"approximate":true,"region":"新疆昭苏 · 夏塔大环线冰川达坂"},"擦缅垭口":{"lat":28.33,"lng":98.66,"approximate":true,"region":"梅里南坡 · 美根通与曲孜通之间"},"奥太娜":{"lat":30.995,"lng":102.691,"region":"四川","kind":"waypoint"},"结斯沟穿山洞":{"lat":31.2,"lng":102.57,"approximate":true,"region":"四川小金 · 结斯乡向花村进山线路"},"慈坡圣山":{"lat":31.14,"lng":102.84,"region":"四川小金 · 四姑娘山周边"},"耍拉垭口":{"lat":29.23,"lng":98.4,"approximate":true,"region":"西藏他念他翁 · 双湖至揉措之间"},"萨武主峰垭口":{"lat":31.35,"lng":102.31,"approximate":true,"region":"四川小金 · 抚边乡大坪村一带"},"岗什卡主峰":{"lat":37.694,"lng":101.455,"region":"青海","kind":"attempt"},"四姑娘山大峰":{"lat":30.997,"lng":102.9,"region":"四川"},"错该达垭口":{"lat":28.44,"lng":100.4,"approximate":true,"region":"亚丁大转山 · 波用措至错该达湖群之间"},"四姑娘山二峰":{"lat":31.026,"lng":102.902,"region":"四川"},"哈巴雪山":{"lat":27.329,"lng":100.111,"region":"云南"},"布生贡嘎":{"lat":29.31476,"lng":101.19009,"region":"四川康定 · 普沙绒乡一带"},"乞力马扎罗山":{"lat":-3.076,"lng":37.353,"region":"坦桑尼亚","overseas":true}}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer src="/assets/js/mountains.js"></script>
+
+    </div>
+
+    <!-- Footer -->    <footer class="sticky-bottom mt-5">
+      <div class="container">
+        © Copyright 2026 Peng  Haoyuan. 
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>

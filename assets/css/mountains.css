@@ -3,6 +3,9 @@
 .mountains-eyebrow { color: var(--trail-green); font-size: 14px; margin: 0 0 8px; }
 .mountains-heading h1 { font-size: 30px; margin: 0; line-height: 1.4; }
 .mountains-stats { font-size: 14px; margin: 0 0 5px; white-space: nowrap; opacity: .75; }
+.mountains-links { display: flex; gap: 24px; padding-bottom: 12px; font-size: 14px; }
+.mountains-links a { color: inherit; padding: 4px 0; }
+.mountains-links a[aria-current="page"] { color: var(--trail-green); border-bottom: 2px solid var(--trail-green); }
 .mountains-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #8884; }
 .mountains-search { display: flex; align-items: center; gap: 10px; flex: 1 1 210px; margin: 0; }
 .mountains input, .mountains select { color: inherit; background: var(--global-bg-color, #fff); border: 1px solid #8886; border-radius: 4px; padding: 8px; font-size: 14px; min-height: 38px; }
@@ -20,12 +23,18 @@
 .mountains-row-icon, .mountains-legend i { color: var(--trail-green); flex-shrink: 0; }
 .mountains-marker { color: #16805d; font-size: 22px; line-height: 26px; text-align: center; filter: drop-shadow(0 1px 1px #fff) drop-shadow(0 -1px 1px #fff); }
 .mountains-marker:focus-visible { outline: 3px solid #16805d; outline-offset: 3px; }
+.mountains-marker.is-unclimbed, .is-unclimbed .mountains-row-icon, .mountains-legend .is-unclimbed i { color: #777f87; }
+.mountains-marker.is-selected, .mountains-marker.is-hovered { color: #c45116; }
+.mountains-marker.is-hovered i { transform: scale(1.18); }
+.mountains-marker i { transition: color .12s, transform .12s; }
+.mountains-description { font-size: 14px; line-height: 1.8; margin: 24px 0; }
+.mountains-description h2 { font-size: 21px; }
 .mountains-records { min-width: 0; border-left: 1px solid #8884; }
 .mountains-list-heading { display: flex; align-items: center; justify-content: space-between; padding: 14px; border-bottom: 1px solid #8884; height: 52px; }
 .mountains-list-heading h2 { font-size: 16px; margin: 0; }.mountains-list-heading span { font-size: 12px; opacity: .7; }
 #mountains-list { height: 528px; overflow-y: auto; overscroll-behavior: contain; }
 .mountains-row { display: block; width: 100%; padding: 13px 14px; border: 0; border-bottom: 1px solid #8883; border-left: 3px solid transparent; background: transparent; color: inherit; text-align: left; cursor: pointer; }
-.mountains-row:hover, .mountains-row[aria-pressed="true"] { background: #16805d12; border-left-color: var(--trail-green); }
+.mountains-row:hover, .mountains-row.is-hovered, .mountains-row[aria-pressed="true"] { background: #16805d12; border-left-color: var(--trail-green); }
 .mountains-row-title { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; }
 .mountains-row-meta, .mountains-row-note { display: block; font-size: 12px; line-height: 1.65; margin-top: 5px; opacity: .75; overflow-wrap: anywhere; }
 .mountains-empty { padding: 24px 14px; font-size: 14px; }
