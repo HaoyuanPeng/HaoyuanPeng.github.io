@@ -1,0 +1,249 @@
+# WGS84 display locations. Verified 2026-11-10; ascent status comes from the hiking log.
+- province: 西藏自治区
+  name: 珠穆朗玛峰
+  elevation: 8848.86
+  lat: 27.98787
+  lng: 86.92483
+  note: 喜马拉雅山脉 · 中国与尼泊尔边界
+  source: https://www.peakwiki.org/peak.php?pid=4
+- province: 新疆维吾尔自治区
+  name: 乔戈里峰
+  elevation: 8611
+  lat: 35.88187
+  lng: 76.51374
+  note: 喀喇昆仑山脉 · 中国与巴基斯坦边界
+  source: https://www.peakwiki.org/peak.php?pid=5
+- province: 四川省
+  name: 贡嘎山
+  elevation: 7508.9
+  lat: 29.59521
+  lng: 101.87889
+  note: 大雪山主峰 · 采用2023年公布高程
+  source: https://www.forestry.gov.cn/c/www/lcdt/529413.jhtml
+  coordinate_source: https://www.peakwiki.org/peak.php?pid=7
+- province: 青海省
+  name: 布喀达坂峰
+  elevation: 6860
+  lat: 36.02464
+  lng: 90.86614
+  note: 昆仑山脉 · 青海与新疆交界
+  source: https://www.peakwiki.org/peak.php?pid=41
+- province: 云南省
+  name: 卡瓦格博峰
+  elevation: 6740
+  lat: 28.43842
+  lng: 98.68224
+  note: 梅里雪山主峰 · 禁止攀登
+  source: https://www.peakwiki.org/peak.php?pid=22
+- province: 甘肃省
+  name: 团结峰
+  elevation: 5808
+  lat: 38.50604
+  lng: 97.71735
+  note: 疏勒南山 · 甘肃与青海交界；部分资料记为5826.8米
+  source: https://www.gswbj.gov.cn/a/2024/09/10/22010.html
+  coordinate_source: https://www.peakwiki.org/peak.php?pid=8
+- province: 台湾省
+  name: 玉山主峰
+  elevation: 3952
+  lat: 23.47000
+  lng: 120.95728
+  note: 玉山山脉
+  source: https://www.peakwiki.org/peak.php?pid=405
+- province: 陕西省
+  name: 太白山拔仙台
+  elevation: 3767.2
+  lat: 33.95512
+  lng: 107.76528
+  note: 秦岭主峰
+  source: https://www.peakwiki.org/peak.php?pid=39
+- province: 内蒙古自治区
+  name: 贺兰山敖包圪垯
+  elevation: 3556.1
+  lat: 38.83433
+  lng: 105.94932
+  note: 贺兰山主峰 · 与宁夏共列
+  source: https://nm.cnr.cn/jiaodiantu/20241114/t20241114_526975073.shtml
+  coordinate_source: https://www.peakwiki.org/peak.php?pid=40
+- province: 宁夏回族自治区
+  name: 贺兰山敖包圪垯
+  elevation: 3556.1
+  lat: 38.83433
+  lng: 105.94932
+  note: 贺兰山主峰 · 与内蒙古共列
+  source: https://www.mct.gov.cn/wlbphone/wlbydd/xxfb/qglb/nx/202301/t20230117_938687.html
+  coordinate_source: https://www.peakwiki.org/peak.php?pid=40
+- province: 湖北省
+  name: 神农顶
+  elevation: 3106.2
+  lat: 31.44010
+  lng: 110.30730
+  note: 神农架
+  source: https://www.peakwiki.org/peak.php?pid=32
+- province: 山西省
+  name: 五台山叶斗峰
+  elevation: 3061.1
+  lat: 39.07985
+  lng: 113.56713
+  note: 五台山北台顶
+  source: https://www.peakwiki.org/peak.php?pid=38
+- province: 贵州省
+  name: 小韭菜坪
+  elevation: 2900.6
+  lat: 26.85251
+  lng: 104.69323
+  note: 乌蒙山主峰
+  source: https://www.peakwiki.org/peak.php?pid=527
+- province: 河北省
+  name: 小五台山东台
+  elevation: 2882
+  lat: 39.94132
+  lng: 115.04297
+  note: 太行山脉
+  source: https://www.peakwiki.org/peak.php?pid=429
+- province: 重庆市
+  name: 阴条岭
+  elevation: 2796.8
+  lat: 31.48253
+  lng: 109.93549
+  note: 巫溪县 · 阴条岭国家级自然保护区
+  source: https://www.peakwiki.org/peak.php?pid=528
+- province: 吉林省
+  name: 长白山白云峰
+  elevation: 2691
+  lat: 42.01618
+  lng: 128.03273
+  note: 长白山天池西侧 · 中国境内最高峰
+  source: https://www.peakwiki.org/peak.php?pid=42
+- province: 河南省
+  name: 老鸦岔垴
+  elevation: 2413.8
+  lat: 34.41891
+  lng: 110.47918
+  note: 灵宝市 · 小秦岭
+  source: https://www.peakwiki.org/peak.php?pid=529
+- province: 北京市
+  name: 东灵山主峰
+  ascent_name: 灵山主峰
+  elevation: 2303
+  lat: 40.03071
+  lng: 115.45402
+  note: 门头沟区 · 东灵山
+  source: https://www.peakwiki.org/peak.php?pid=36
+- province: 福建省
+  name: 黄岗山
+  elevation: 2160.8
+  lat: 27.85969
+  lng: 117.78331
+  note: 武夷山主峰 · 与江西共列
+  source: https://www.peakwiki.org/peak.php?pid=410
+- province: 江西省
+  name: 黄岗山
+  elevation: 2160.8
+  lat: 27.85969
+  lng: 117.78331
+  note: 武夷山主峰 · 与福建共列
+  source: https://www.peakwiki.org/peak.php?pid=410
+- province: 广西壮族自治区
+  name: 猫儿山
+  elevation: 2141.5
+  lat: 25.86629
+  lng: 110.41271
+  note: 兴安县与资源县交界 · 越城岭
+  source: https://www.peakwiki.org/peak.php?pid=35
+- province: 湖南省
+  name: 酃峰
+  elevation: 2115.2
+  lat: 26.31347
+  lng: 114.03689
+  note: 炎陵县 · 又名神农峰、斗笠峰
+  source: https://www.peakwiki.org/peak.php?pid=530
+- province: 浙江省
+  name: 黄茅尖
+  elevation: 1929
+  lat: 27.89334
+  lng: 119.18675
+  note: 龙泉市 · 洞宫山脉
+  source: https://www.peakwiki.org/peak.php?pid=428
+- province: 广东省
+  name: 石坑崆
+  elevation: 1902
+  lat: 24.92786
+  lng: 112.99098
+  note: 阳山县 · 南岭
+  source: https://www.peakwiki.org/peak.php?pid=419
+- province: 海南省
+  name: 五指山二峰
+  elevation: 1867
+  lat: 18.89944
+  lng: 109.70480
+  note: 五指山主峰 · 第二指
+  source: https://www.peakwiki.org/peak.php?pid=583
+- province: 安徽省
+  name: 黄山莲花峰
+  elevation: 1864.8
+  lat: 30.12745
+  lng: 118.16598
+  note: 黄山最高峰
+  source: https://www.peakwiki.org/peak.php?pid=416
+- province: 黑龙江省
+  name: 大秃顶子山
+  elevation: 1690
+  lat: 44.46081
+  lng: 128.21123
+  note: 张广才岭
+  source: https://www.peakwiki.org/peak.php?pid=531
+- province: 山东省
+  name: 泰山玉皇顶
+  elevation: 1532.7
+  lat: 36.25703
+  lng: 117.10305
+  note: 泰山主峰
+  source: https://www.peakwiki.org/peak.php?pid=533
+- province: 辽宁省
+  name: 老秃顶子山
+  elevation: 1367.3
+  lat: 41.32245
+  lng: 124.88617
+  note: 桓仁与新宾交界；采用省生态环境厅资料，部分榜单另列岗山、花脖子山
+  source: https://sthj.ln.gov.cn/sthj/hjgl/stbh/C63C0B59B52C437D812E712D865B6A0B/index.shtml
+  coordinate_source: https://www.peakbagger.com/peak.aspx?pid=53244
+- province: 天津市
+  name: 九山顶
+  elevation: 1078.5
+  lat: 40.20
+  lng: 117.50
+  approximate: true
+  note: 蓟州区 · 津冀交界
+  source: https://zh.wikipedia.org/wiki/天津地理
+- province: 香港特别行政区
+  name: 大帽山
+  elevation: 957
+  lat: 22.41012
+  lng: 114.12460
+  note: 新界中部 · 大帽山郊野公园
+  source: https://www.hiking.gov.hk/promote/info/id/OGdwWlNpL1VmT3FQYndjVjljNklCZz09/map_type/2
+  coordinate_source: https://www.peakwiki.org/peak.php?pid=534
+- province: 江苏省
+  name: 花果山玉女峰
+  elevation: 624.4
+  lat: 34.65405
+  lng: 119.28889
+  note: 连云港 · 云台山主峰
+  source: https://www.peakwiki.org/peak.php?pid=535
+- province: 澳门特别行政区
+  name: 叠石塘山
+  elevation: 170.6
+  lat: 22.12065
+  lng: 113.56130
+  note: 路环岛 · 又名塔石塘山
+  source: https://yearbook.gcs.gov.mo/uploads/yearbook_pdf/2020/myb2020c.pdf
+  coordinate_source: https://www.peakwiki.org/peak.php?pid=536
+- province: 上海市
+  name: 大金山岛主峰
+  elevation: 103.7
+  lat: 30.6918
+  lng: 121.4208
+  note: 上海全境最高点；佘山为陆地最高峰，另见个人登山记录
+  source: https://www.shanghai.gov.cn/nw15343/20260526/25e2a8ae7dab4b1ab996c8fcd2c7f350.html
+  coordinate_source: https://mapcarta.com/N4213329485
