@@ -201,13 +201,12 @@
   note: 泰山主峰
   source: https://www.peakwiki.org/peak.php?pid=533
 - province: 辽宁省
-  name: 老秃顶子山
-  elevation: 1367.3
-  lat: 41.32245
-  lng: 124.88617
-  note: 桓仁与新宾交界；采用省生态环境厅资料，部分榜单另列岗山、花脖子山
-  source: https://sthj.ln.gov.cn/sthj/hjgl/stbh/C63C0B59B52C437D812E712D865B6A0B/index.shtml
-  coordinate_source: https://www.peakbagger.com/peak.aspx?pid=53244
+  name: 岗山
+  elevation: 1347
+  lat: 41.61710
+  lng: 125.44763
+  note: 新宾县 · 辽吉交界 · 龙岗山脉；另有海拔1373m的记载
+  source: https://www.peakwiki.org/peak.php?pid=1020
 - province: 天津市
   name: 九山顶
   elevation: 1078.5

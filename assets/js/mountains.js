@@ -145,7 +145,7 @@
         popup.append(p);
       });
       const accuracy = document.createElement('small');
-      accuracy.textContent = `${record.location.region} · ${record.location.approximate ? '大致位置（区域示意点）' : '约略位置'}`;
+      accuracy.textContent = `${record.region} · ${record.location.approximate ? '大致位置（区域示意点）' : '约略位置'}`;
       popup.append(accuracy);
       if (record.source) {
         const link = document.createElement('a');
