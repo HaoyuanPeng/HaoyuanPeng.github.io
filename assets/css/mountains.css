@@ -21,7 +21,7 @@
 .mountains-legend { position: absolute; bottom: 27px; left: 12px; display: flex; flex-wrap: wrap; gap: 12px; background: #fff; color: #333; padding: 8px 10px; font-size: 12px; border-radius: 4px; z-index: 450; pointer-events: none; }
 .mountains-legend span { display: flex; align-items: center; gap: 6px; }
 .mountains-row-icon, .mountains-legend i { color: var(--trail-green); flex-shrink: 0; }
-.mountains-marker { color: #16805d; font-size: 22px; line-height: 26px; text-align: center; filter: drop-shadow(0 1px 1px #fff) drop-shadow(0 -1px 1px #fff); }
+.mountains-marker { color: #16805d; font-size: 11px; line-height: 13px; text-align: center; filter: drop-shadow(0 1px 1px #fff) drop-shadow(0 -1px 1px #fff); }
 .mountains-marker:focus-visible { outline: 3px solid #16805d; outline-offset: 3px; }
 .mountains-marker.is-unclimbed, .is-unclimbed .mountains-row-icon, .mountains-legend .is-unclimbed i { color: #777f87; }
 .mountains-marker.is-selected, .mountains-marker.is-hovered { color: #c45116; }
