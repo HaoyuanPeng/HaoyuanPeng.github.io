@@ -156,7 +156,7 @@
         popup.append(document.createElement('br'), link);
       }
       const label = catalog ? `${record.region} · ${record.name}` : record.name;
-      const icon = L.divIcon({ className: `mountains-marker${catalog && !record.climbed ? ' is-unclimbed' : ''}`, html: '<i class="fas fa-mountain" aria-hidden="true"></i>', iconSize: [26, 26], iconAnchor: [13, 23], popupAnchor: [0, -22] });
+      const icon = L.divIcon({ className: `mountains-marker${catalog && !record.climbed ? ' is-unclimbed' : ''}`, html: '<i class="fas fa-mountain" aria-hidden="true"></i>', iconSize: [13, 13], iconAnchor: [6.5, 11.5], popupAnchor: [0, -11] });
       const marker = L.marker([record.location.lat, record.location.lng], { icon, title: label, alt: label }).bindPopup(popup).bindTooltip(label).addTo(layer);
       marker.on('click', () => selectRecord(record, false));
       marker.on('mouseover', () => highlightRecord(record.index));
